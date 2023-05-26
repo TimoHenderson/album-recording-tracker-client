@@ -1,4 +1,5 @@
 using RecordingTrackerApi.Data;
+using RecordingTrackerApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -15,6 +16,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RecordingContext>(options =>
     options.UseSqlServer(dbConnectionString));
 
+builder.Services.AddScoped<RecordingService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -29,5 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.CreateDbIfNotExists();
 
 app.Run();

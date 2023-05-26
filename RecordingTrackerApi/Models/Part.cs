@@ -13,11 +13,11 @@ public class Part
 
     [Required]
     [JsonIgnore]
-    public Song? Song { get; set; }
+    public Song Song { get; set; } = new Song();
 
-    public Instrument? Instrument { get; set; }
+    public Instrument Instrument { get; set; } = new Instrument();
 
-    public int completion { get; set; }
+    public int completion { get; set; } = 0;
 
 
 }

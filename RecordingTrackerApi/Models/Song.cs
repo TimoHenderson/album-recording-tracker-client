@@ -13,7 +13,7 @@ public class Song
 
     [Required]
     [JsonIgnore]
-    public Album? Album { get; set; }
+    public Album Album { get; set; } = new Album();
 
-    public ICollection<Part>? Parts { get; set; }
+    public ICollection<Part> Parts { get; set; } = new List<Part>();
 }

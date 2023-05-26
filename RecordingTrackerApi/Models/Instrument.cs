@@ -12,5 +12,5 @@ public class Instrument
     public string? Name { get; set; }
 
     [JsonIgnore]
-    public ICollection<Part>? Parts { get; set; }
+    public ICollection<Part> Parts { get; set; } = new List<Part>();
 }

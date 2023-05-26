@@ -15,7 +15,11 @@ public class RecordingService
 
     public IEnumerable<Artist> GetAll()
     {
-        return _context.Artists
+        return _context.Artists.
+            Include(a => a.Albums)
+            .ThenInclude(a => a.Songs)
+            .ThenInclude(s => s.Parts)
+            .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .ToList();
     }
