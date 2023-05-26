@@ -1,3 +1,7 @@
+using RecordingTrackerApi.Data;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 var dbConnectionString = builder.Configuration["DbConnection"];
 
@@ -7,6 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<RecordingContext>(options =>
+    options.UseSqlServer(dbConnectionString));
 
 var app = builder.Build();
 
