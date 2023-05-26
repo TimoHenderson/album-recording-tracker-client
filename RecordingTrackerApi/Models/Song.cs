@@ -15,5 +15,5 @@ public class Song
     [JsonIgnore]
     public Album? Album { get; set; }
 
-    public ICollection<Part>? Songs { get; set; }
+    public ICollection<Part>? Parts { get; set; }
 }
