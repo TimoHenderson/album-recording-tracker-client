@@ -6,6 +6,19 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var dbConnectionString = builder.Configuration["DbConnection"];
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("*")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+        });
+
+
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -27,9 +40,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseHttpsRedirection();
 
+app.UseCors();
+
 app.UseAuthorization();
+
 
 app.MapControllers();
 

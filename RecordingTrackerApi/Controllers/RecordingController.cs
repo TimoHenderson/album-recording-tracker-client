@@ -1,11 +1,12 @@
 using RecordingTrackerApi.Services;
 using RecordingTrackerApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace RecordingTrackerApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class RecordingController : ControllerBase
     {
         private readonly RecordingService _service;
@@ -15,6 +16,7 @@ namespace RecordingTrackerApi.Controllers
             _service = service;
         }
 
+        [EnableCors]
         [HttpGet]
         public IEnumerable<Artist> GetAll()
         { // make this get all of the linked data that has a reference to the Artist
