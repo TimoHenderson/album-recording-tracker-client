@@ -1,6 +1,6 @@
 const baseURL = 'https://localhost:5101/api/Recording/'
 
-export const fetchAllArtists = () => {
+export const fetchAllRecordingData = () => {
     return fetch(baseURL)
         .then(res => res.json())
 }
