@@ -1,31 +1,17 @@
-import { Accordion, AccordionSummary, AccordionDetails, Card } from "@mui/material";
+
 import AlbumList from "../Lists/AlbumList";
-
-
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArtistCard from "../Cards/ArtistCard";
+import BaseAccordion from "../Cards/BaseAccordion";
 
 
 const Artist = ({ artist }) => {
-    console.log('artist', artist);
-    console.log('artist', artist.completion);
+    const summary = <ArtistCard artist={artist} />;
+    const details = <AlbumList artist={artist} />;
     return (
-        <Card>
-            <Accordion>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <ArtistCard artist={artist} />
-                </AccordionSummary>
-                <AccordionDetails>
-                    <AlbumList artist={artist} />
-                </AccordionDetails>
-            </Accordion>
-        </Card>
-
-
+        <BaseAccordion
+            summary={summary}
+            details={details}
+        />
     );
 }
 

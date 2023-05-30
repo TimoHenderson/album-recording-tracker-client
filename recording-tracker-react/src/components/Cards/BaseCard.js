@@ -1,10 +1,12 @@
-import { Card, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
+import CardTitle from "./CardTitle";
+import CardDetails from "./CardDetails";
 
-const BaseCard = ({ children }) => {
+const BaseCard = ({ element, childKey, link }) => {
     return (
-
-        <Stack>
-            {children}
+        <Stack spacing={1} sx={{ width: "100%" }}>
+            <CardTitle elementName={element.name} link={link} />
+            <CardDetails element={element} childKey={childKey} />
         </Stack>
 
     );

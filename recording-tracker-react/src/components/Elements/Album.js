@@ -8,7 +8,7 @@ const Album = ({ album, artist }) => {
 
     return (
         <div>
-            <Accordion>
+            <Accordion elevation={6}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"

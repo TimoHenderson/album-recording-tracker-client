@@ -26,7 +26,7 @@ function App() {
 
     <Router>
       <AppHeader />
-      <Container sx={{ bgcolor: "grey", height: "100dvh", margin: "auto", width: "100dvw" }} >
+      <Container sx={{ bgcolor: "grey" }} >
         <Routes>
           <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
           <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
