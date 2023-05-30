@@ -1,11 +1,10 @@
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-const BaseAccordion = ({ summary, details }) => {
+const BaseAccordion = ({ summary, details, expanded }) => {
     return (
-        <Accordion elevation={6} >
+        <Accordion elevation={6} expanded={expanded}>
             <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
+                expandIcon={!expanded && <ExpandMoreIcon />}
             >
                 {summary}
             </AccordionSummary>

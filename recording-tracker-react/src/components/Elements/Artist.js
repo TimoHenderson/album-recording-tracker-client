@@ -4,13 +4,14 @@ import BaseCard from "../Cards/BaseCard";
 import BaseAccordion from "../Cards/BaseAccordion";
 
 
-const Artist = ({ artist }) => {
+const Artist = ({ artist, expanded }) => {
     const link = `/artists/${artist.id}`;
     const summary = <BaseCard element={artist} childKey={"albums"} link={link} />;
     const albumNodes = artist.albums.map((album) => <Album key={album.id} album={album} artist={artist} />);
     const details = <ElementList listNodes={albumNodes} />;
     return (
         <BaseAccordion
+            expanded={expanded}
             summary={summary}
             details={details}
         />

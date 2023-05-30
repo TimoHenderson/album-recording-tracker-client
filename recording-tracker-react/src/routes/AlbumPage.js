@@ -9,7 +9,7 @@ const AlbumPage = ({ recordingData }) => {
     return (
         <>
             {artist && <h2>{artist.name}</h2>}
-            {album && <Album artist={artist} album={album} />}
+            {album && <Album artist={artist} album={album} expanded={true} />}
         </>
     );
 }

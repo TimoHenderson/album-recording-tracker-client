@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
-import PartList from '../components/Lists/PartList';
+import Song from '../components/Elements/Song';
+
 
 const SongPage = ({ recordingData }) => {
     const { artistId, albumId, songId } = useParams();
@@ -12,7 +13,7 @@ const SongPage = ({ recordingData }) => {
             {artist && <h2>{artist.name}</h2>}
             {album && <h3>{album.name}</h3>}
             {song && <h4>{song.name}</h4>}
-            {song && <PartList artist={artist} album={album} song={song} />}
+            {song && <Song artist={artist} album={album} song={song} expanded={true} />}
         </div>
     );
 }
