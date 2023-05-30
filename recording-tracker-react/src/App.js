@@ -1,10 +1,10 @@
 
-import './App.css';
+
 import { useState, useEffect } from 'react';
 import AppHeader from './components/Header/AppHeader';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllRecordingData } from './api_services/RecordingDataService';
-import { calculateCompletions } from './utils/calculateCompletions';
+import { Container } from '@mui/material';
 import AllArtistsPage from './routes/AllArtistsPage';
 import ArtistPage from './routes/ArtistPage';
 import AlbumPage from './routes/AlbumPage';
@@ -22,24 +22,20 @@ function App() {
     getArtists();
   }, []);
 
-
-
-
-
-
-
   return (
-    <div className="App">
-      <Router>
-        <AppHeader />
+
+    <Router>
+      <AppHeader />
+      <Container sx={{ bgcolor: "grey", height: "100dvh", margin: "auto", width: "100dvw" }} >
         <Routes>
           <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
           <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
           <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} />} />
           <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} />} />
         </Routes>
-      </Router>
-    </div>
+      </Container>
+    </Router >
+
   );
 }
 
