@@ -11,6 +11,7 @@ function App() {
   const [recordingData, setRecordingData] = useState([]);
   useEffect(() => {
     const getArtists = async () => {
+      console.log('getArtists');
       const recordingData = await fetchAllRecordingData();
       setRecordingData(recordingData);
     }
@@ -19,8 +20,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppHeader />
       <Router>
+        <AppHeader />
         <Routes>
           <Route path="/artists" element={<AllArtistsPage recordingData={recordingData} />} />
           <Route path="/artists/:id" element={<ArtistPage recordingData={recordingData} />} />

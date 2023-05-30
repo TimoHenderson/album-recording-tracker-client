@@ -1,5 +1,4 @@
 const Part = ({ part }) => {
-    console.log(part.id);
     return (
         <div>
             <h4>{part.name}</h4>

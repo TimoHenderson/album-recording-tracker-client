@@ -8,8 +8,8 @@ const ArtistPage = ({ recordingData }) => {
     console.log(artist);
 
     return (<div>
-        <h2>{artist.name}</h2>
-        <AlbumList albums={artist.albums} />
+        {artist && <h2>{artist.name}</h2>}
+        {artist && <AlbumList albums={artist.albums} />}
     </div>);
 }
 
