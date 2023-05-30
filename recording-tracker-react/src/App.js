@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllRecordingData } from './api_services/RecordingDataService';
 import AllArtistsPage from './routes/AllArtistsPage';
 import ArtistPage from './routes/ArtistPage';
+import AlbumPage from './routes/AlbumPage';
+import SongPage from './routes/SongPage';
 
 function App() {
   const [recordingData, setRecordingData] = useState([]);
@@ -23,8 +25,10 @@ function App() {
       <Router>
         <AppHeader />
         <Routes>
-          <Route path="/artists" element={<AllArtistsPage recordingData={recordingData} />} />
-          <Route path="/artists/:id" element={<ArtistPage recordingData={recordingData} />} />
+          <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
+          <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
+          <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} />} />
+          <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} />} />
         </Routes>
       </Router>
     </div>

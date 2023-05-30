@@ -1,7 +1,9 @@
 import Part from "./Part";
 
-const PartList = ({ parts }) => {
-    const partNodes = parts.map((part) => <Part key={part.id} part={part} />);
+const PartList = ({ artist, album, song }) => {
+    const partNodes = song.parts.map((part) =>
+        <Part key={part.id} artist={artist} album={album} song={song} part={part}
+        />);
 
     return (
         <div>

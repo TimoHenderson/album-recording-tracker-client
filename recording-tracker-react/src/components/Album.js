@@ -1,10 +1,16 @@
 import SongList from "./SongList";
+import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 
-const Album = ({ album }) => {
+const Album = ({ album, artist }) => {
+
+
     return (
         <div>
-            <h3>{album.name}</h3>
-            <SongList songs={album.songs} />
+            <Link to={`/artists/${artist.id}/albums/${album.id}`}>
+                <Typography variant="h4">{album.name}</Typography>
+            </Link>
+            <SongList album={album} artist={artist} />
         </div>
     );
 }
