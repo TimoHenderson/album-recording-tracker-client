@@ -1,32 +1,17 @@
 import SongList from "../Lists/SongList";
-import { Link } from "react-router-dom";
-import { Typography, Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import BaseCard from "../Cards/BaseCard";
+import BaseAccordion from "../Cards/BaseAccordion";
 
-const Album = ({ album, artist }) => {
-
-
+const Album = ({ artist, album }) => {
+    const link = `/artists/${artist.id}/albums/${album.id}`;
+    const summary = <BaseCard element={album} childKey={"songs"} link={link} />;
+    const details = <SongList album={album} artist={artist} />;
+    // `/artists/${artist.id}/albums/${album.id}`
     return (
-        <div>
-            <Accordion elevation={6}>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                >
-                    <Link to={`/artists/${artist.id}/albums/${album.id}`}>
-                        <Typography variant="h4">{album.name}</Typography>
-                    </Link>
-                    <Typography variant="p">Completion: {album.completion}%</Typography>
-                    <Typography variant="p">NumSongs: {album.songs.length}</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <SongList album={album} artist={artist} />
-                </AccordionDetails>
-            </Accordion>
-
-
-        </div>
+        <BaseAccordion
+            summary={summary}
+            details={details}
+        />
     );
 }
 

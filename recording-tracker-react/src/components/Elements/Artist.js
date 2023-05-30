@@ -1,11 +1,12 @@
 
 import AlbumList from "../Lists/AlbumList";
-import ArtistCard from "../Cards/ArtistCard";
+import BaseCard from "../Cards/BaseCard";
 import BaseAccordion from "../Cards/BaseAccordion";
 
 
 const Artist = ({ artist }) => {
-    const summary = <ArtistCard artist={artist} />;
+    const link = `/artists/${artist.id}`;
+    const summary = <BaseCard element={artist} childKey={"albums"} link={link} />;
     const details = <AlbumList artist={artist} />;
     return (
         <BaseAccordion
