@@ -4,9 +4,9 @@ const ArtistPage = ({ recordingData }) => {
     const { id } = useParams();
     const artist = recordingData.find((artist) => artist.id === Number(id));
     return (
-        <>
+        <div>
             {artist && <Artist artist={artist} expanded={true} />}
-        </>
+        </div>
     );
 }
 
