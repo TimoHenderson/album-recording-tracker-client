@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import AlbumList from '../components/AlbumList';
+import AlbumList from '../components/Lists/AlbumList';
 const ArtistPage = ({ recordingData }) => {
     const { id } = useParams();
     console.log('id', id);

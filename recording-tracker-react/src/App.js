@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import AppHeader from './components/Header/AppHeader';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllRecordingData } from './api_services/RecordingDataService';
+import { calculateCompletions } from './utils/calculateCompletions';
 import AllArtistsPage from './routes/AllArtistsPage';
 import ArtistPage from './routes/ArtistPage';
 import AlbumPage from './routes/AlbumPage';
@@ -11,14 +12,21 @@ import SongPage from './routes/SongPage';
 
 function App() {
   const [recordingData, setRecordingData] = useState([]);
+
   useEffect(() => {
     const getArtists = async () => {
-      console.log('getArtists');
-      const recordingData = await fetchAllRecordingData();
-      setRecordingData(recordingData);
+      const data = await fetchAllRecordingData();
+      console.log('data', data);
+      setRecordingData(data);
     }
     getArtists();
   }, []);
+
+
+
+
+
+
 
   return (
     <div className="App">

@@ -1,4 +1,4 @@
-import Part from "./Part";
+import Part from "../Elements/Part";
 
 const PartList = ({ artist, album, song }) => {
     const partNodes = song.parts.map((part) =>

@@ -23,9 +23,9 @@ namespace RecordingTrackerApi.Data
             var bassInstrument = new Instrument { Name = "Bass" };
             var drumsInstrument = new Instrument { Name = "Drums" };
 
-            var song1GuitarPart = new Part { Name = "Guitar Part", Instrument = guitarInstrument };
-            var song1BassPart = new Part { Name = "Bass Part", Instrument = bassInstrument };
-            var song1DrumsPart = new Part { Name = "Drums Part", Instrument = drumsInstrument };
+            var song1GuitarPart = new Part { Name = "Guitar Part", Instrument = guitarInstrument, completion = 20 };
+            var song1BassPart = new Part { Name = "Bass Part", Instrument = bassInstrument, completion = 20 };
+            var song1DrumsPart = new Part { Name = "Drums Part", Instrument = drumsInstrument, completion = 20 };
 
             var song2GuitarPart = new Part { Name = "Guitar Part2", Instrument = guitarInstrument };
             var song2BassPart = new Part { Name = "Bass Part2", Instrument = bassInstrument };
@@ -38,7 +38,7 @@ namespace RecordingTrackerApi.Data
 
             var artist1 = new Artist { Name = "Artist 1", Albums = new List<Album> { album1 } };
 
-            var song3GuitarPart = new Part { Name = "Guitar Part3", Instrument = guitarInstrument };
+            var song3GuitarPart = new Part { Name = "Guitar Part3", Instrument = guitarInstrument, completion = 20 };
             var song3BassPart = new Part { Name = "Bass Part3", Instrument = bassInstrument };
             var song3DrumsPart = new Part { Name = "Drums Part3", Instrument = drumsInstrument };
 

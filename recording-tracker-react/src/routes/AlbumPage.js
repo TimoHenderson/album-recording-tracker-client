@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom';
-import SongList from '../components/SongList';
+import SongList from '../components/Lists/SongList';
 const AlbumPage = ({ recordingData }) => {
     const { artistId, albumId } = useParams();
     const artist = recordingData.find((artist) => artist.id === Number(artistId));
-    const album = artist.albums.find((album) => album.id === Number(albumId));
+    const album = artist ? artist.albums.find((album) => album.id === Number(albumId)) : null;
 
     return (<div>
         {artist && <h2>{artist.name}</h2>}

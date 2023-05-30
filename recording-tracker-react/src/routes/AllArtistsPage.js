@@ -1,4 +1,4 @@
-import ArtistList from "../components/ArtistList";
+import ArtistList from "../components/Lists/ArtistList";
 
 const AllArtistsPage = ({ recordingData }) => {
     return (

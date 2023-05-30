@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import PartList from '../components/PartList';
+import PartList from '../components/Lists/PartList';
 
 const SongPage = ({ recordingData }) => {
     const { artistId, albumId, songId } = useParams();

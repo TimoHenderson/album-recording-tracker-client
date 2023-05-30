@@ -1,4 +1,4 @@
-import Song from "./Song";
+import Song from "../Elements/Song";
 const SongList = ({ album, artist }) => {
     const songNodes = album.songs.map((song) => <Song key={song.id} song={song} album={album} artist={artist} />);
     return (
