@@ -1,24 +1,27 @@
-import { Box, Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Divider } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const BaseAccordion = ({ summary, details, expanded }) => {
     return (
-        <div>
-            <Accordion elevation={5} expanded={expanded} disableGutters
+
+        <Accordion elevation={5} variant={'elevated'} square={true} expanded={expanded} >
+            <AccordionSummary expandIcon={!expanded && <ExpandMoreIcon />}
                 sx={{
-                    '& .MuiPaper-root': {
-                        color: 'darkslategray',
-                        border: '3px groove silver',
-                        borderRadius: '1rem',
-                    },
+                    paddingLeft: '0px',
+                    paddingRight: '0px'
                 }}>
-                <AccordionSummary expandIcon={!expanded && <ExpandMoreIcon />}>
-                    {summary}
-                </AccordionSummary>
-                <AccordionDetails>
-                    {details}
-                </AccordionDetails>
-            </Accordion>
-        </div>
+                {summary}
+            </AccordionSummary>
+            <AccordionDetails
+                sx={{
+                    padding: 0,
+
+                }}>
+                {/* <Divider /> */}
+                {details}
+
+            </AccordionDetails>
+        </Accordion>
+
     );
 }
 

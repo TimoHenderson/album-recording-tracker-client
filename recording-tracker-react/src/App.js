@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 import AppHeader from './components/Header/AppHeader';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllRecordingData } from './api_services/RecordingDataService';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import AllArtistsPage from './routes/AllArtistsPage';
 import ArtistPage from './routes/ArtistPage';
 import AlbumPage from './routes/AlbumPage';
 import SongPage from './routes/SongPage';
+import AppThemeProvider from './themes/AppThemeProvider';
+import { darkTheme } from './themes/darkTheme';
 
 function App() {
   const [recordingData, setRecordingData] = useState([]);
@@ -23,19 +25,22 @@ function App() {
   }, []);
 
   return (
-
-    <Router>
-      <AppHeader />
-      <Container sx={{ bgcolor: "grey", minHeight: "110dvh" }} >
-        <Routes>
-          <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
-          <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
-          <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} />} />
-          <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} />} />
-        </Routes>
-      </Container>
-    </Router >
-
+    <AppThemeProvider theme={darkTheme}>
+      <Router>
+        <AppHeader />
+        <Container sx={{
+          backgroundColor: "background.default",
+          minHeight: "100dvh"
+        }} >
+          <Routes>
+            <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
+            <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
+            <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} />} />
+            <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} />} />
+          </Routes>
+        </Container>
+      </Router >
+    </AppThemeProvider>
   );
 }
 

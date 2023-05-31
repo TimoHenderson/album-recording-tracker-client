@@ -10,10 +10,11 @@ const CardDetails = ({ element, childKey }) => {
         <Box sx={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            textAlign: "center"
+            textAlign: "left",
+
         }}>
-            <Typography variant="p">{numChildString}</Typography>
-            <Typography variant="p">{completionString}</Typography>
+            <Typography variant="body2">{numChildString}</Typography>
+            <Typography variant="body2">{completionString}</Typography>
 
         </Box>
     );

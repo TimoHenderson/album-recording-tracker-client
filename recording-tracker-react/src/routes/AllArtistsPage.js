@@ -5,7 +5,7 @@ const AllArtistsPage = ({ recordingData }) => {
     const artistNodes = recordingData ? recordingData.map((artist) => <Artist key={artist.id} artist={artist} />) : null;
     return (
         <div>
-            <ElementList listNodes={artistNodes} />
+            <ElementList listNodes={artistNodes} elementName={"Artists"} />
         </div>
     );
 }

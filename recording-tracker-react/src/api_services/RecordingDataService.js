@@ -1,6 +1,7 @@
 import { calculateCompletions } from "../utils/calculateCompletions"
 
 const baseURL = 'https://localhost:5101/api/Recording/'
+// const baseURL = 'http://192.168.0.40:5101/api/Recording/'
 
 export const fetchAllRecordingData = () => {
     return fetch(baseURL)

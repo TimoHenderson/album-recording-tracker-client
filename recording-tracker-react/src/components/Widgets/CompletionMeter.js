@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box } from "@mui/material";
 
 const CompletionMeter = ({ childElements }) => {
     console.log("childElements", childElements);

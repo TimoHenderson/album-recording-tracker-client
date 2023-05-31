@@ -1,11 +1,17 @@
-import { Stack, Box } from "@mui/material";
+import { Divider, Stack, Typography } from "@mui/material";
 
-const ElementList = ({ listNodes }) => {
+const ElementList = ({ listNodes, elementName }) => {
     return (
-        <Stack spacing={1} sx={{ paddingTop: "1rem" }}>
+        <Stack sx={{ padding: "0rem" }}>
+            {elementName &&
+                <><Typography variant="body2" sx={{ padding: "0.5rem", margin: 0 }}>
+                    {elementName}
+                </Typography>
+                    <Divider variant="middle" color="gray" />
+                </>
+            }
             {listNodes}
         </Stack>
-
     );
 }
 

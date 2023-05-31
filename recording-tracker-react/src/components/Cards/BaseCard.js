@@ -5,12 +5,21 @@ import CompletionMeter from "../Widgets/CompletionMeter";
 
 const BaseCard = ({ element, childKey, link }) => {
     return (
-        <Box sx={{ display: "grid", gridTemplateColumns: "5fr 1fr", width: "100%" }}>
-            <Stack spacing={1} sx={{ width: "100%" }}>
+        <Box sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr 5fr",
+            width: "100%",
+            padding: "0rem 0.5rem 0rem 0.5rem",
+        }}>
+            <CompletionMeter childElements={element[childKey]} />
+            <Stack spacing={1} sx={{
+                width: "100%",
+                padding: "0rem 1rem 0rem 1rem"
+            }}>
                 <CardTitle elementName={element.name} link={link} />
                 <CardDetails element={element} childKey={childKey} />
             </Stack>
-            <CompletionMeter childElements={element[childKey]} />
+
         </Box>
 
     );

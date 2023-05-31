@@ -8,7 +8,7 @@ const Artist = ({ artist, expanded }) => {
     const link = `/artists/${artist.id}`;
     const summary = <BaseCard element={artist} childKey={"albums"} link={link} />;
     const albumNodes = artist.albums.map((album) => <Album key={album.id} album={album} artist={artist} />);
-    const details = <ElementList listNodes={albumNodes} />;
+    const details = <ElementList listNodes={albumNodes} elementName={"Albums"} />;
     return (
         <BaseAccordion
             expanded={expanded}
