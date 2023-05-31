@@ -28,10 +28,14 @@ function App() {
     <AppThemeProvider theme={darkTheme}>
       <Router>
         <AppHeader />
-        <Container sx={{
-          backgroundColor: "background.default",
-          minHeight: "100dvh"
-        }} >
+        <Container
+          sx={{
+            backgroundColor: "background.default",
+            minHeight: "100vh",
+            height: "auto",
+            marginBottom: "10rem"
+          }}
+        >
           <Routes>
             <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
             <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />

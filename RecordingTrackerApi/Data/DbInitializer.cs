@@ -22,6 +22,8 @@ namespace RecordingTrackerApi.Data
             var guitarInstrument = new Instrument { Name = "Guitar" };
             var bassInstrument = new Instrument { Name = "Bass" };
             var drumsInstrument = new Instrument { Name = "Drums" };
+            var tromboneInstrument = new Instrument { Name = "Trombone" };
+            var keysInstrument = new Instrument { Name = "Keys" };
 
             var song1GuitarPart = new Part { Name = "Guitar Part", Instrument = guitarInstrument, completion = 20 };
             var song1BassPart = new Part { Name = "Bass Part", Instrument = bassInstrument, completion = 20 };
@@ -55,7 +57,76 @@ namespace RecordingTrackerApi.Data
 
             var artist3 = new Artist { Name = "Artist 3" };
 
-            var artists = new Artist[] { artist1, artist2, artist3 };
+            var song5GuitarPart = new Part { Name = "Guitar Part5", Instrument = guitarInstrument, completion = 80 };
+            var song5BassPart = new Part { Name = "Bass Part5", Instrument = bassInstrument, completion = 60 };
+            var song5DrumsPart = new Part { Name = "Drums Part5", Instrument = drumsInstrument, completion = 40 };
+
+            var song6GuitarPart = new Part { Name = "Guitar Part6", Instrument = guitarInstrument, completion = 100 };
+            var song6BassPart = new Part { Name = "Bass Part6", Instrument = bassInstrument, completion = 20 };
+            var song6DrumsPart = new Part { Name = "Drums Part6", Instrument = drumsInstrument, completion = 60 };
+            var song6TrombonePart = new Part { Name = "Trombone Part6", Instrument = tromboneInstrument, completion = 100 };
+            var song6KeysPart = new Part { Name = "Keys Part6", Instrument = keysInstrument, completion = 100 };
+
+            var song7GuitarPart = new Part { Name = "Guitar Part7", Instrument = guitarInstrument, completion = 80 };
+            var song7BassPart = new Part { Name = "Bass Part7", Instrument = bassInstrument, completion = 40 };
+            var song7DrumsPart = new Part { Name = "Drums Part7", Instrument = drumsInstrument, completion = 20 };
+            var song7TrombonePart = new Part { Name = "Trombone Part7", Instrument = tromboneInstrument, completion = 40 };
+            var song7KeysPart = new Part { Name = "Keys Part7", Instrument = keysInstrument, completion = 20 };
+
+            var song5 = new Song { Name = "Clack, Graabes, and Renfrewshire", Parts = new List<Part> { song5GuitarPart, song5BassPart, song5DrumsPart } };
+            var song6 = new Song { Name = "Sexy(Stick Your Bum Out)", Parts = new List<Part> { song6GuitarPart, song6BassPart, song6DrumsPart, song6KeysPart, song7TrombonePart } };
+            var song7 = new Song { Name = "What's The Problem?", Parts = new List<Part> { song7GuitarPart, song7BassPart, song7DrumsPart, song7TrombonePart, song7KeysPart } };
+
+            var album3 = new Album { Name = "Are You Papylonian?", Songs = new List<Song> { song5, song6, song7 } };
+
+            var song8GuitarPart = new Part { Name = "Guitar Part8", Instrument = guitarInstrument, completion = 80 };
+            var song8BassPart = new Part { Name = "Bass Part8", Instrument = bassInstrument, completion = 40 };
+            var song8DrumsPart = new Part { Name = "Drums Part8", Instrument = drumsInstrument, completion = 100 };
+            var song8TrombonePart = new Part { Name = "Trombone Part8", Instrument = tromboneInstrument, completion = 40 };
+            var song8KeysPart = new Part { Name = "Keys Part8", Instrument = keysInstrument, completion = 20 };
+
+            var song9GuitarPart = new Part { Name = "Guitar Part9", Instrument = guitarInstrument, completion = 80 };
+            var song9BassPart = new Part { Name = "Bass Part9", Instrument = bassInstrument, completion = 40 };
+            var song9DrumsPart = new Part { Name = "Drums Part9", Instrument = drumsInstrument, completion = 20 };
+            var song9TrombonePart = new Part { Name = "Trombone Part9", Instrument = tromboneInstrument, completion = 40 };
+            var song9KeysPart = new Part { Name = "Keys Part9", Instrument = keysInstrument, completion = 20 };
+
+            var song10GuitarPart = new Part { Name = "Guitar Part10", Instrument = guitarInstrument, completion = 80 };
+            var song10BassPart = new Part { Name = "Bass Part10", Instrument = bassInstrument, completion = 40 };
+            var song10DrumsPart = new Part { Name = "Drums Part10", Instrument = drumsInstrument, completion = 20 };
+            var song10TrombonePart = new Part { Name = "Trombone Part10", Instrument = tromboneInstrument, completion = 40 };
+            var song10KeysPart = new Part { Name = "Keys Part10", Instrument = keysInstrument, completion = 20 };
+
+            var song11GuitarPart = new Part { Name = "Guitar Part11", Instrument = guitarInstrument, completion = 80 };
+            var song11BassPart = new Part { Name = "Bass Part11", Instrument = bassInstrument, completion = 40 };
+            var song11DrumsPart = new Part { Name = "Drums Part11", Instrument = drumsInstrument, completion = 20 };
+            var song11TrombonePart = new Part { Name = "Trombone Part11", Instrument = tromboneInstrument, completion = 40 };
+            var song11KeysPart = new Part { Name = "Keys Part11", Instrument = keysInstrument, completion = 20 };
+
+            var song12GuitarPart = new Part { Name = "Guitar Part12", Instrument = guitarInstrument, completion = 80 };
+            var song12BassPart = new Part { Name = "Bass Part12", Instrument = bassInstrument, completion = 40 };
+            var song12DrumsPart = new Part { Name = "Drums Part12", Instrument = drumsInstrument, completion = 20 };
+            var song12TrombonePart = new Part { Name = "Trombone Part12", Instrument = tromboneInstrument, completion = 40 };
+            var song12KeysPart = new Part { Name = "Keys Part12", Instrument = keysInstrument, completion = 20 };
+
+            var song13GuitarPart = new Part { Name = "Guitar Part13", Instrument = guitarInstrument, completion = 80 };
+            var song13BassPart = new Part { Name = "Bass Part13", Instrument = bassInstrument, completion = 40 };
+            var song13DrumsPart = new Part { Name = "Drums Part13", Instrument = drumsInstrument, completion = 20 };
+            var song13TrombonePart = new Part { Name = "Trombone Part13", Instrument = tromboneInstrument, completion = 40 };
+            var song13KeysPart = new Part { Name = "Keys Part13", Instrument = keysInstrument, completion = 20 };
+
+            var song8 = new Song { Name = "Old Tired Cold Bones", Parts = new List<Part> { song8GuitarPart, song8BassPart, song8DrumsPart, song8TrombonePart, song8KeysPart } };
+            var song9 = new Song { Name = "Egyptian Space Pirates", Parts = new List<Part> { song9GuitarPart, song9BassPart, song9DrumsPart, song9TrombonePart, song9KeysPart } };
+            var song10 = new Song { Name = "Late Night Sneaky Mama", Parts = new List<Part> { song10GuitarPart, song10BassPart, song10DrumsPart, song10TrombonePart, song10KeysPart } };
+            var song11 = new Song { Name = "The Ballad of the 3rd Arm", Parts = new List<Part> { song11GuitarPart, song11BassPart, song11DrumsPart, song11TrombonePart, song11KeysPart } };
+            var song12 = new Song { Name = "Grap", Parts = new List<Part> { song12GuitarPart, song12BassPart, song12DrumsPart, song12TrombonePart, song12KeysPart } };
+            var song13 = new Song { Name = "Scientific Facts", Parts = new List<Part> { song13GuitarPart, song13BassPart, song13DrumsPart, song13TrombonePart, song13KeysPart } };
+
+            var album4 = new Album { Name = "Paradigm Lost", Songs = new List<Song> { song8, song9, song10, song11, song12, song13 } };
+            var artist4 = new Artist { Name = "Bar Room Crawl", Albums = new List<Album> { album3, album4 } };
+
+
+            var artists = new Artist[] { artist1, artist2, artist3, artist4 };
             context.Artists.AddRange(artists);
             context.SaveChanges();
 
