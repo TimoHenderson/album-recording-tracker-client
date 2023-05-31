@@ -11,7 +11,7 @@ const LinkBehavior = forwardRef((props, ref) => (
 const CardTitle = ({ elementName, link }) => {
     return (
         <Box sx={{ display: "flex", justifyContent: "flex-start" }}>
-            <Typography variant="body1" color="inherit" sx={{ '& a': { color: 'inherit' } }}>
+            <Typography variant="body1" color="inherit" sx={{ '& a': { color: 'inherit' } }} noWrap>
                 <Link component={RouterLink} to={link} color="primary" variant="inherit">
                     {/* <Typography variant="a">{elementName}</Typography> */}
                     {elementName}
