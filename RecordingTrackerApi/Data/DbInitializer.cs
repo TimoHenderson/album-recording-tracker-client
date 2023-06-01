@@ -5,7 +5,7 @@ namespace RecordingTrackerApi.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(RecordingContext context)
+        public static void Initialize(ArtistContext context)
         {
             context.Database.EnsureDeleted();
             context.Database.Migrate();
@@ -33,12 +33,12 @@ namespace RecordingTrackerApi.Data
             var song2BassPart = new Part { Name = "Bass Part2", Instrument = bassInstrument };
             var song2DrumsPart = new Part { Name = "Drums Part2", Instrument = drumsInstrument };
 
-            var song1 = new Song { Name = "Song 1", Parts = new List<Part> { song1GuitarPart, song1BassPart, song1DrumsPart } };
-            var song2 = new Song { Name = "Song 2", Parts = new List<Part> { song2GuitarPart, song2BassPart, song2DrumsPart } };
+            var song1 = new Song { Name = "Song 1", Children = new List<Part> { song1GuitarPart, song1BassPart, song1DrumsPart } };
+            var song2 = new Song { Name = "Song 2", Children = new List<Part> { song2GuitarPart, song2BassPart, song2DrumsPart } };
 
-            var album1 = new Album { Name = "Album 1", Songs = new List<Song> { song1, song2 } };
+            var album1 = new Album { Name = "Album 1", Children = new List<Song> { song1, song2 } };
 
-            var artist1 = new Artist { Name = "Artist 1", Albums = new List<Album> { album1 } };
+            var artist1 = new Artist { Name = "Artist 1", Children = new List<Album> { album1 } };
 
             var song3GuitarPart = new Part { Name = "Guitar Part3", Instrument = guitarInstrument, completion = 20 };
             var song3BassPart = new Part { Name = "Bass Part3", Instrument = bassInstrument };
@@ -48,12 +48,12 @@ namespace RecordingTrackerApi.Data
             var song4BassPart = new Part { Name = "Bass Part4", Instrument = bassInstrument };
             var song4DrumsPart = new Part { Name = "Drums Part4", Instrument = drumsInstrument };
 
-            var song3 = new Song { Name = "Song 3", Parts = new List<Part> { song3GuitarPart, song3BassPart, song3DrumsPart } };
-            var song4 = new Song { Name = "Song 4", Parts = new List<Part> { song4GuitarPart, song4BassPart, song4DrumsPart } };
+            var song3 = new Song { Name = "Song 3", Children = new List<Part> { song3GuitarPart, song3BassPart, song3DrumsPart } };
+            var song4 = new Song { Name = "Song 4", Children = new List<Part> { song4GuitarPart, song4BassPart, song4DrumsPart } };
 
-            var album2 = new Album { Name = "Album 2", Songs = new List<Song> { song3, song4 } };
+            var album2 = new Album { Name = "Album 2", Children = new List<Song> { song3, song4 } };
 
-            var artist2 = new Artist { Name = "Artist 2", Albums = new List<Album> { album2 } };
+            var artist2 = new Artist { Name = "Artist 2", Children = new List<Album> { album2 } };
 
             var artist3 = new Artist { Name = "Artist 3" };
 
@@ -73,11 +73,11 @@ namespace RecordingTrackerApi.Data
             var song7TrombonePart = new Part { Name = "Trombone Part7", Instrument = tromboneInstrument, completion = 40 };
             var song7KeysPart = new Part { Name = "Keys Part7", Instrument = keysInstrument, completion = 20 };
 
-            var song5 = new Song { Name = "Clack, Graabes, and Renfrewshire", Parts = new List<Part> { song5GuitarPart, song5BassPart, song5DrumsPart } };
-            var song6 = new Song { Name = "Sexy(Stick Your Bum Out)", Parts = new List<Part> { song6GuitarPart, song6BassPart, song6DrumsPart, song6KeysPart, song7TrombonePart } };
-            var song7 = new Song { Name = "What's The Problem?", Parts = new List<Part> { song7GuitarPart, song7BassPart, song7DrumsPart, song7TrombonePart, song7KeysPart } };
+            var song5 = new Song { Name = "Clack, Graabes, and Renfrewshire", Children = new List<Part> { song5GuitarPart, song5BassPart, song5DrumsPart } };
+            var song6 = new Song { Name = "Sexy(Stick Your Bum Out)", Children = new List<Part> { song6GuitarPart, song6BassPart, song6DrumsPart, song6KeysPart, song7TrombonePart } };
+            var song7 = new Song { Name = "What's The Problem?", Children = new List<Part> { song7GuitarPart, song7BassPart, song7DrumsPart, song7TrombonePart, song7KeysPart } };
 
-            var album3 = new Album { Name = "Are You Papylonian?", Songs = new List<Song> { song5, song6, song7 } };
+            var album3 = new Album { Name = "Are You Papylonian?", Children = new List<Song> { song5, song6, song7 } };
 
             var song8GuitarPart = new Part { Name = "Guitar Part8", Instrument = guitarInstrument, completion = 80 };
             var song8BassPart = new Part { Name = "Bass Part8", Instrument = bassInstrument, completion = 40 };
@@ -115,15 +115,15 @@ namespace RecordingTrackerApi.Data
             var song13TrombonePart = new Part { Name = "Trombone Part13", Instrument = tromboneInstrument, completion = 40 };
             var song13KeysPart = new Part { Name = "Keys Part13", Instrument = keysInstrument, completion = 20 };
 
-            var song8 = new Song { Name = "Old Tired Cold Bones", Parts = new List<Part> { song8GuitarPart, song8BassPart, song8DrumsPart, song8TrombonePart, song8KeysPart } };
-            var song9 = new Song { Name = "Egyptian Space Pirates", Parts = new List<Part> { song9GuitarPart, song9BassPart, song9DrumsPart, song9TrombonePart, song9KeysPart } };
-            var song10 = new Song { Name = "Late Night Sneaky Mama", Parts = new List<Part> { song10GuitarPart, song10BassPart, song10DrumsPart, song10TrombonePart, song10KeysPart } };
-            var song11 = new Song { Name = "The Ballad of the 3rd Arm", Parts = new List<Part> { song11GuitarPart, song11BassPart, song11DrumsPart, song11TrombonePart, song11KeysPart } };
-            var song12 = new Song { Name = "Grap", Parts = new List<Part> { song12GuitarPart, song12BassPart, song12DrumsPart, song12TrombonePart, song12KeysPart } };
-            var song13 = new Song { Name = "Scientific Facts", Parts = new List<Part> { song13GuitarPart, song13BassPart, song13DrumsPart, song13TrombonePart, song13KeysPart } };
+            var song8 = new Song { Name = "Old Tired Cold Bones", Children = new List<Part> { song8GuitarPart, song8BassPart, song8DrumsPart, song8TrombonePart, song8KeysPart } };
+            var song9 = new Song { Name = "Egyptian Space Pirates", Children = new List<Part> { song9GuitarPart, song9BassPart, song9DrumsPart, song9TrombonePart, song9KeysPart } };
+            var song10 = new Song { Name = "Late Night Sneaky Mama", Children = new List<Part> { song10GuitarPart, song10BassPart, song10DrumsPart, song10TrombonePart, song10KeysPart } };
+            var song11 = new Song { Name = "The Ballad of the 3rd Arm", Children = new List<Part> { song11GuitarPart, song11BassPart, song11DrumsPart, song11TrombonePart, song11KeysPart } };
+            var song12 = new Song { Name = "Grap", Children = new List<Part> { song12GuitarPart, song12BassPart, song12DrumsPart, song12TrombonePart, song12KeysPart } };
+            var song13 = new Song { Name = "Scientific Facts", Children = new List<Part> { song13GuitarPart, song13BassPart, song13DrumsPart, song13TrombonePart, song13KeysPart } };
 
-            var album4 = new Album { Name = "Paradigm Lost", Songs = new List<Song> { song8, song9, song10, song11, song12, song13 } };
-            var artist4 = new Artist { Name = "Bar Room Crawl", Albums = new List<Album> { album3, album4 } };
+            var album4 = new Album { Name = "Paradigm Lost", Children = new List<Song> { song8, song9, song10, song11, song12, song13 } };
+            var artist4 = new Artist { Name = "Bar Room Crawl", Children = new List<Album> { album3, album4 } };
 
 
             var artists = new Artist[] { artist1, artist2, artist3, artist4 };

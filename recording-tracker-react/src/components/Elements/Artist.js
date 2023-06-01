@@ -1,20 +1,27 @@
-import Album from "../Elements/Album";
-import ElementList from "../Lists/ElementList";
+import { useState } from "react";
 import BaseCard from "../Cards/BaseCard";
-import BaseAccordion from "../Cards/BaseAccordion";
+import EditArtistModal from "../Modals/EditArtistModal";
 
+const Artist = ({ artist, handleAction }) => {
+    const [openEditModal, setOpenEditModal] = useState(false);
+    console.log("artist", artist)
+    const openModal = (modalName) => {
+        if (modalName === "edit") setOpenEditModal(true);
+    }
+    const closeEdit = () => { setOpenEditModal(false); }
 
-const Artist = ({ artist, expanded }) => {
+    const onSubmit = (action, payload) => {
+        console.log("onSubmit", action, payload);
+        handleAction(action, payload, artist);
+        closeEdit();
+    }
+
     const link = `/artists/${artist.id}`;
-    const summary = <BaseCard element={artist} childKey={"albums"} link={link} />;
-    const albumNodes = artist.albums.map((album) => <Album key={album.id} album={album} artist={artist} />);
-    const details = <ElementList listNodes={albumNodes} elementName={"Albums"} />;
     return (
-        <BaseAccordion
-            expanded={expanded}
-            summary={summary}
-            details={details}
-        />
+        <>
+            <BaseCard element={artist} elementType={"Artist"} childKey={"albums"} link={link} openModal={openModal} />
+            <EditArtistModal artist={artist} open={openEditModal} close={closeEdit} submit={onSubmit} />
+        </>
     );
 }
 

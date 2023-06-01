@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
@@ -13,7 +14,10 @@ public class Part
 
     [Required]
     [JsonIgnore]
-    public Song Song { get; set; } = new Song();
+    public Song Parent { get; set; } = new Song();
+
+    [NotMapped]
+    public int ParentNum => Parent.Id;
 
     public Instrument Instrument { get; set; } = new Instrument();
 

@@ -1,19 +1,21 @@
 import { useParams } from 'react-router-dom';
 import Song from '../components/Elements/Song';
 
+import PartList from '../components/Lists/PartList';
 
-const SongPage = ({ recordingData }) => {
+const SongPage = ({ artists, handleAction }) => {
     const { artistId, albumId, songId } = useParams();
-    const artist = recordingData.find((artist) => artist.id === Number(artistId));
+    const artist = artists.find((artist) => artist.id === Number(artistId));
     const album = artist.albums.find((album) => album.id === Number(albumId));
     const song = album.songs.find((song) => song.id === Number(songId));
+
 
     return (
         <div>
             {artist && <h2>{artist.name}</h2>}
             {album && <h3>{album.name}</h3>}
-            {song && <h4>{song.name}</h4>}
-            {song && <Song artist={artist} album={album} song={song} expanded={true} />}
+            {song && <Song artist={artist} album={album} song={song} expanded={true} handleAction={handleAction} />}
+            <PartList artist={artist} album={album} song={song} handleAction={handleAction} />;
         </div>
     );
 }
