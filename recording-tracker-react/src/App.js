@@ -24,7 +24,7 @@ function App() {
     getArtists();
   }, []);
 
-  const handleAction = (action, payload, element, elementType) => {
+  const handleAction = (action, payload, element, elementType, parentIds) => {
     console.log('handleAction', action, element, payload);
     switch (action) {
       case "edit":

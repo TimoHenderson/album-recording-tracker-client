@@ -6,8 +6,8 @@ import PartList from '../components/Lists/PartList';
 const SongPage = ({ artists, handleAction }) => {
     const { artistId, albumId, songId } = useParams();
     const artist = artists.find((artist) => artist.id === Number(artistId));
-    const album = artist.albums.find((album) => album.id === Number(albumId));
-    const song = album.songs.find((song) => song.id === Number(songId));
+    const album = artist.children.find((album) => album.id === Number(albumId));
+    const song = album.children.find((song) => song.id === Number(songId));
 
 
     return (

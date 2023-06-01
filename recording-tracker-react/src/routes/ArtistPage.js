@@ -8,7 +8,7 @@ const ArtistPage = ({ artists, handleAction }) => {
     const artist = artists.find((artist) => artist.id === Number(id));
 
     const albumNodes = artist ?
-        artist.albums.map(
+        artist.children.map(
             (album) => <Album key={album.id} album={album} artist={artist} handleAction={handleAction} />)
         : null;
 

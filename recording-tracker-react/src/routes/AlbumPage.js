@@ -6,9 +6,9 @@ import ElementList from '../components/Lists/ElementList';
 const AlbumPage = ({ artists, handleAction }) => {
     const { artistId, albumId } = useParams();
     const artist = artists.find((artist) => artist.id === Number(artistId));
-    const album = artist ? artist.albums.find((album) => album.id === Number(albumId)) : null;
+    const album = artist ? artist.children.find((album) => album.id === Number(albumId)) : null;
     const songNodes = album ?
-        album.songs.map(
+        album.children.map(
             (song) => <Song key={song.id} song={song} album={album} artist={artist} handleAction={handleAction} />)
         : null;
 

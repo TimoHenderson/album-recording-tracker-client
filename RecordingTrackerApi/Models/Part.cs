@@ -19,6 +19,9 @@ public class Part
     [NotMapped]
     public int ParentNum => Parent.Id;
 
+    [NotMapped]
+    public string Type => "Part";
+
     public Instrument Instrument { get; set; } = new Instrument();
 
     public int completion { get; set; } = 0;

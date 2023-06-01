@@ -5,7 +5,7 @@ const Album = ({ artist, album, handleAction }) => {
     const link = `/artists/${artist.id}/albums/${album.id}`;
 
     return (
-        <BaseCard element={album} elementType={"Album"} childKey={"songs"} link={link} />
+        <BaseCard element={album} link={link} />
     );
 }
 

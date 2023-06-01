@@ -7,13 +7,13 @@ const calculateCompletion = (elements) => {
 export const calculateCompletions = (data) => {
     console.log(data)
     data.forEach(artist => {
-        artist.albums.forEach(album => {
-            album.songs.forEach(song => {
-                song.completion = calculateCompletion(song.parts);
+        artist.children.forEach(album => {
+            album.children.forEach(song => {
+                song.completion = calculateCompletion(song.children);
             });
-            album.completion = calculateCompletion(album.songs);
+            album.completion = calculateCompletion(album.children);
         });
-        artist.completion = calculateCompletion(artist.albums);
+        artist.completion = calculateCompletion(artist.children);
     });
     console.log('data', data)
     return data;

@@ -19,5 +19,12 @@ public class Song
     [NotMapped]
     public int ParentNum => Parent.Id;
 
+    [NotMapped]
+    public string Type => "Song";
+
+    [NotMapped]
+    public string ChildType => "Part";
+
+
     public ICollection<Part> Children { get; set; } = new List<Part>();
 }
