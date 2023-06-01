@@ -1,6 +1,6 @@
 import BaseCard from "../Cards/BaseCard";
 
-const Song = ({ artist, album, song, expanded }) => {
+const Song = ({ artist, album, song, handleAction }) => {
 
     const link = `/artists/${artist.id}/albums/${album.id}/songs/${song.id}`
 

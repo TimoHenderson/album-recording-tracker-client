@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import AppHeader from './components/Header/AppHeader';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { fetchAllRecordingData } from './api_services/RecordingDataService';
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import AllArtistsPage from './routes/AllArtistsPage';
 import ArtistPage from './routes/ArtistPage';
 import AlbumPage from './routes/AlbumPage';
@@ -24,6 +24,10 @@ function App() {
     getArtists();
   }, []);
 
+  const handleAction = (action, element, payload) => {
+    console.log('handleAction', action, element, payload);
+  }
+
   return (
     <AppThemeProvider theme={darkTheme}>
       <Router>
@@ -37,10 +41,10 @@ function App() {
           }}
         >
           <Routes>
-            <Route path="artists" element={<AllArtistsPage recordingData={recordingData} />} />
-            <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} />} />
-            <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} />} />
-            <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} />} />
+            <Route path="artists" element={<AllArtistsPage recordingData={recordingData} handleAction={handleAction} />} />
+            <Route path="artists/:id" element={<ArtistPage recordingData={recordingData} handleAction={handleAction} />} />
+            <Route path="artists/:artistId/albums/:albumId" element={<AlbumPage recordingData={recordingData} handleAction={handleAction} />} />
+            <Route path="artists/:artistId/albums/:albumId/songs/:songId" element={<SongPage recordingData={recordingData} handleAction={handleAction} />} />
           </Routes>
         </Container>
       </Router >
