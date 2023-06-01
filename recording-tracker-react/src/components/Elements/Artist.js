@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BaseCard from "../Cards/BaseCard";
-import EditArtistModal from "../../Modals/EditArtistModal";
+import EditArtistModal from "../Modals/EditArtistModal";
 
 const Artist = ({ artist, handleAction }) => {
     const [openEditModal, setOpenEditModal] = useState(false);

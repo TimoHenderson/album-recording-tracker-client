@@ -28,6 +28,8 @@ function App() {
     console.log('handleAction', action, element, payload);
     switch (action) {
       case "edit":
+        console.log("edit", elementType, payload);
+        break;
     }
   }
 

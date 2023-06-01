@@ -1,7 +1,7 @@
 import { useState } from "react";
 import BaseModal from "./BaseModal";
 import { Modal } from "@mui/material";
-import EditForm from "../components/Forms/EditForm";
+import EditForm from "../Forms/EditForm";
 const EditArtistModal = ({ artist, submit, open, close }) => {
     console.log("EditArtistModal", artist)
     return (

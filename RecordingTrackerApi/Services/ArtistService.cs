@@ -16,9 +16,9 @@ public class ArtistService
     public IEnumerable<Artist> GetAll()
     {
         return _context.Artists.
-            Include(a => a.Albums)
-            .ThenInclude(a => a.Songs)
-            .ThenInclude(s => s.Parts)
+            Include(a => a.Children)
+            .ThenInclude(a => a.Children)
+            .ThenInclude(s => s.Children)
             .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .ToList();
@@ -27,9 +27,9 @@ public class ArtistService
     public Artist? Get(int id)
     {
         return _context.Artists.
-           Include(a => a.Albums)
-            .ThenInclude(a => a.Songs)
-            .ThenInclude(s => s.Parts)
+           Include(a => a.Children)
+            .ThenInclude(a => a.Children)
+            .ThenInclude(s => s.Children)
             .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .SingleOrDefault(a => a.Id == id);

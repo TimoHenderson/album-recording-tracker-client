@@ -10,5 +10,5 @@ public class Artist
     [MaxLength(100)]
     public string? Name { get; set; }
 
-    public ICollection<Album> Albums { get; set; } = new List<Album>();
+    public ICollection<Album> Children { get; set; } = new List<Album>();
 }

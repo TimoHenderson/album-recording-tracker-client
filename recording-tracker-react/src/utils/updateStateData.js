@@ -1,0 +1,1 @@
+export const updateStateData = (stateData, element, parentIds) => {
