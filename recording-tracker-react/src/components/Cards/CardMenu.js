@@ -3,7 +3,7 @@ import { IconButton, Menu, MenuItem } from '@mui/material';
 import { capitalizeSingular } from "../../utils/stringUtils";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const CardMenu = ({ elementType, childKey, openModal }) => {
+const CardMenu = ({ element, openModal }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -43,9 +43,9 @@ const CardMenu = ({ elementType, childKey, openModal }) => {
                     'aria-labelledby': 'menu-button',
                 }}
             >
-                <MenuItem onClick={(e) => handleOpenModal(e, "edit")}>{`Edit ${elementType}`}</MenuItem>
-                <MenuItem onClick={handleClose}>{`New ${capitalizeSingular(childKey)}`}</MenuItem>
-                <MenuItem onClick={handleClose}>{`Delete ${elementType}`}</MenuItem>
+                <MenuItem onClick={(e) => handleOpenModal(e, "edit")}>{`Edit ${element.type}`}</MenuItem>
+                <MenuItem onClick={handleClose}>{`New ${element.childType}`}</MenuItem>
+                <MenuItem onClick={handleClose}>{`Delete ${element.type}`}</MenuItem>
             </Menu>
         </div >
     );

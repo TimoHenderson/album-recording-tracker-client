@@ -4,7 +4,7 @@ import CardDetails from "./CardDetails";
 import CompletionMeter from "../Widgets/CompletionMeter";
 import CardMenu from "./CardMenu";
 
-const BaseCard = ({ element, elementType, childKey, link, openModal }) => {
+const BaseCard = ({ element, link, openModal }) => {
     const navigate = useNavigate();
     const handleCardClick = () => {
         navigate(link);
@@ -15,12 +15,12 @@ const BaseCard = ({ element, elementType, childKey, link, openModal }) => {
             <CardHeader
                 avatar={
                     <Avatar variant="square">
-                        <CompletionMeter childElements={element[childKey]} />
+                        <CompletionMeter childElements={element.children} />
                     </Avatar>
                 }
                 title={element.name}
-                subheader={<CardDetails element={element} childKey={childKey} />}
-                action={<CardMenu childKey={childKey} elementType={elementType} openModal={openModal} />}
+                subheader={<CardDetails element={element} />}
+                action={<CardMenu element={element} openModal={openModal} />}
                 onClick={handleCardClick}
             />
         </Card>

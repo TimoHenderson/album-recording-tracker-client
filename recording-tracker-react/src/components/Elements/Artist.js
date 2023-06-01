@@ -19,7 +19,7 @@ const Artist = ({ artist, handleAction }) => {
     const link = `/artists/${artist.id}`;
     return (
         <>
-            <BaseCard element={artist} elementType={"Artist"} childKey={"albums"} link={link} openModal={openModal} />
+            <BaseCard element={artist} link={link} openModal={openModal} />
             <EditArtistModal artist={artist} open={openEditModal} close={closeEdit} submit={onSubmit} />
         </>
     );

@@ -1,7 +1,7 @@
 import Part from "../Elements/Part";
 
 const PartList = ({ artist, album, song }) => {
-    const partNodes = song.parts.map((part) =>
+    const partNodes = song.children.map((part) =>
         <Part key={part.id} artist={artist} album={album} song={song} part={part}
         />);
 

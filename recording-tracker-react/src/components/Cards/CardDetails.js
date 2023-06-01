@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { capitalize } from "../../utils/stringUtils";
 
-const CardDetails = ({ element, childKey }) => {
-    const children = element[childKey];
-    const numChildString = `${capitalize(childKey)}: ${children.length}`;
+const CardDetails = ({ element }) => {
+
+    const numChildString = `${element.childType}s: ${element.children.length}`;
     const completionString = `Completion: ${element.completion}%`;
     return (
         <Box sx={{
