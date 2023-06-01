@@ -13,8 +13,8 @@ const CardDetails = ({ element, childKey }) => {
             textAlign: "left",
 
         }}>
-            <Typography variant="body2">{numChildString}</Typography>
-            <Typography variant="body2">{completionString}</Typography>
+            <Typography variant="inherit">{numChildString}</Typography>
+            <Typography variant="inherit">{completionString}</Typography>
 
         </Box>
     );

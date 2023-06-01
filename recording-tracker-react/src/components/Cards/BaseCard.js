@@ -1,28 +1,30 @@
-import { Stack, Box, Card } from "@mui/material";
-import CardTitle from "./CardTitle";
+import { Card, CardHeader, IconButton, Avatar } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { useNavigate } from "react-router-dom";
 import CardDetails from "./CardDetails";
 import CompletionMeter from "../Widgets/CompletionMeter";
+import CardMenu from "./CardMenu";
 
 const BaseCard = ({ element, childKey, link }) => {
+    const navigate = useNavigate();
+    const handleCardClick = () => {
+        navigate(link);
+    }
+
     return (
         <Card>
-            <Box sx={{
-                display: "grid",
-                gridTemplateColumns: "1fr 5fr",
-                width: "100%",
-                padding: "0rem 0.5rem 0rem 0.5rem",
-            }}>
-                <CompletionMeter childElements={element[childKey]} />
-                <Stack spacing={1} sx={{
-                    width: "100%",
-                    padding: "0rem 1rem 0rem 1rem"
-                }}>
-                    <CardTitle elementName={element.name} link={link} />
-                    <CardDetails element={element} childKey={childKey} />
-                </Stack>
-
-            </Box></Card>
-
+            <CardHeader
+                avatar={
+                    <Avatar variant="square">
+                        <CompletionMeter childElements={element[childKey]} />
+                    </Avatar>
+                }
+                title={element.name}
+                subheader={<CardDetails element={element} childKey={childKey} />}
+                action={<CardMenu />}
+                onClick={handleCardClick}
+            />
+        </Card>
     );
 }
 
