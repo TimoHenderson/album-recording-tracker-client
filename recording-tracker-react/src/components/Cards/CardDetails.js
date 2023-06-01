@@ -1,11 +1,10 @@
 import { Box, Typography } from "@mui/material";
+import { capitalize } from "../../utils/stringUtils";
 
 const CardDetails = ({ element, childKey }) => {
     const children = element[childKey];
-    const capitalizedChildKey = childKey.charAt(0).toUpperCase() + childKey.slice(1);
-    const numChildString = `${capitalizedChildKey}: ${children.length}`;
+    const numChildString = `${capitalize(childKey)}: ${children.length}`;
     const completionString = `Completion: ${element.completion}%`;
-
     return (
         <Box sx={{
             display: "grid",
@@ -15,7 +14,6 @@ const CardDetails = ({ element, childKey }) => {
         }}>
             <Typography variant="inherit">{numChildString}</Typography>
             <Typography variant="inherit">{completionString}</Typography>
-
         </Box>
     );
 }

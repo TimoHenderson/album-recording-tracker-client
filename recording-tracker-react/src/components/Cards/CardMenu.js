@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { IconButton, Menu, MenuItem } from '@mui/material';
+import { capitalizeSingular } from "../../utils/stringUtils";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const CardMenu = () => {
+const CardMenu = ({ elementType, childKey }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -27,7 +28,6 @@ const CardMenu = () => {
             >
                 <MoreVertIcon />
             </IconButton>
-            {/* <ClickAwayListener onClickAway={handleClickAway}> */}
             <Menu
                 id="card-menu"
                 anchorEl={anchorEl}
@@ -37,11 +37,10 @@ const CardMenu = () => {
                     'aria-labelledby': 'menu-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={handleClose}>{`Edit ${elementType}`}</MenuItem>
+                <MenuItem onClick={handleClose}>{`New ${capitalizeSingular(childKey)}`}</MenuItem>
+                <MenuItem onClick={handleClose}>{`Delete ${elementType}`}</MenuItem>
             </Menu>
-            {/* </ClickAwayListener> */}
         </div>
     );
 }

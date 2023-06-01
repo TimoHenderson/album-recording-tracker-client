@@ -1,11 +1,10 @@
 import { Card, CardHeader, IconButton, Avatar } from "@mui/material";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useNavigate } from "react-router-dom";
 import CardDetails from "./CardDetails";
 import CompletionMeter from "../Widgets/CompletionMeter";
 import CardMenu from "./CardMenu";
 
-const BaseCard = ({ element, childKey, link }) => {
+const BaseCard = ({ element, elementType, childKey, link }) => {
     const navigate = useNavigate();
     const handleCardClick = () => {
         navigate(link);
@@ -21,7 +20,7 @@ const BaseCard = ({ element, childKey, link }) => {
                 }
                 title={element.name}
                 subheader={<CardDetails element={element} childKey={childKey} />}
-                action={<CardMenu />}
+                action={<CardMenu childKey={childKey} elementType={elementType} />}
                 onClick={handleCardClick}
             />
         </Card>

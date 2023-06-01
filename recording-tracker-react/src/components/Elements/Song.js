@@ -5,7 +5,7 @@ const Song = ({ artist, album, song, expanded }) => {
     const link = `/artists/${artist.id}/albums/${album.id}/songs/${song.id}`
 
     return (
-        <BaseCard element={song} childKey={"parts"} link={link} />
+        <BaseCard element={song} elementType={"Song"} childKey={"parts"} link={link} />
     );
 }
 
