@@ -26,10 +26,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<RecordingContext>(options =>
+builder.Services.AddDbContext<ArtistContext>(options =>
     options.UseSqlServer(dbConnectionString));
 
-builder.Services.AddScoped<RecordingService>();
+builder.Services.AddScoped<ArtistService>();
 
 var app = builder.Build();
 

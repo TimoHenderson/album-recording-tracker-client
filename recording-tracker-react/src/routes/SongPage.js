@@ -3,9 +3,9 @@ import Song from '../components/Elements/Song';
 
 import PartList from '../components/Lists/PartList';
 
-const SongPage = ({ recordingData, handleAction }) => {
+const SongPage = ({ artists, handleAction }) => {
     const { artistId, albumId, songId } = useParams();
-    const artist = recordingData.find((artist) => artist.id === Number(artistId));
+    const artist = artists.find((artist) => artist.id === Number(artistId));
     const album = artist.albums.find((album) => album.id === Number(albumId));
     const song = album.songs.find((song) => song.id === Number(songId));
 

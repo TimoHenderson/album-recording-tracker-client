@@ -3,9 +3,9 @@ using RecordingTrackerApi.Models;
 
 namespace RecordingTrackerApi.Data;
 
-public class RecordingContext : DbContext
+public class ArtistContext : DbContext
 {
-    public RecordingContext(DbContextOptions<RecordingContext> options)
+    public ArtistContext(DbContextOptions<ArtistContext> options)
         : base(options)
     {
     }

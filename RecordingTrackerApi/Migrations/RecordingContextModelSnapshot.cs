@@ -10,7 +10,7 @@ using RecordingTrackerApi.Data;
 
 namespace RecordingTrackerApi.Migrations
 {
-    [DbContext(typeof(RecordingContext))]
+    [DbContext(typeof(ArtistContext))]
     partial class RecordingContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

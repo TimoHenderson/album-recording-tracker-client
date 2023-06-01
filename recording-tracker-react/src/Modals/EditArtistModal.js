@@ -1,15 +1,12 @@
 import { useState } from "react";
 import BaseModal from "./BaseModal";
 import { Modal } from "@mui/material";
-const EditArtistModal = ({ artist, update, open, close }) => {
+import EditForm from "../components/Forms/EditForm";
+const EditArtistModal = ({ artist, submit, open, close }) => {
+    console.log("EditArtistModal", artist)
     return (
         <BaseModal open={open} close={close}>
-            <h1>Edit Artist</h1>
-            <form>
-                <label>Name</label>
-                <input type="text" name="name" value={"Hi"} />
-                <button type="submit">Save</button>
-            </form>
+            {artist && <EditForm artist={artist} submit={submit} cancel={close} />}
         </BaseModal>
     );
 }

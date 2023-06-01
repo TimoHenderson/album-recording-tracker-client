@@ -3,9 +3,9 @@ import Album from '../components/Elements/Album';
 import Song from '../components/Elements/Song';
 import ElementList from '../components/Lists/ElementList';
 
-const AlbumPage = ({ recordingData, handleAction }) => {
+const AlbumPage = ({ artists, handleAction }) => {
     const { artistId, albumId } = useParams();
-    const artist = recordingData.find((artist) => artist.id === Number(artistId));
+    const artist = artists.find((artist) => artist.id === Number(artistId));
     const album = artist ? artist.albums.find((album) => album.id === Number(albumId)) : null;
     const songNodes = album ?
         album.songs.map(

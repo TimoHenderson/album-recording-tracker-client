@@ -11,7 +11,7 @@ using RecordingTrackerApi.Data;
 
 namespace RecordingTrackerApi.Migrations
 {
-    [DbContext(typeof(RecordingContext))]
+    [DbContext(typeof(ArtistContext))]
     [Migration("20230526125533_RenameSongPartsListToParts")]
     partial class RenameSongPartsListToParts
     {
