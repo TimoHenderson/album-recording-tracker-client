@@ -12,55 +12,55 @@ namespace RecordingTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistController : ControllerBase
+    public class PartController : ControllerBase
     {
         private readonly RecordingContext _context;
 
-        public ArtistController(RecordingContext context)
+        public PartController(RecordingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Artist
+        // GET: api/Part
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
+        public async Task<ActionResult<IEnumerable<Part>>> GetParts()
         {
-          if (_context.Artists == null)
+          if (_context.Parts == null)
           {
               return NotFound();
           }
-            return await _context.Artists.ToListAsync();
+            return await _context.Parts.ToListAsync();
         }
 
-        // GET: api/Artist/5
+        // GET: api/Part/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetArtist(int id)
+        public async Task<ActionResult<Part>> GetPart(int id)
         {
-          if (_context.Artists == null)
+          if (_context.Parts == null)
           {
               return NotFound();
           }
-            var artist = await _context.Artists.FindAsync(id);
+            var part = await _context.Parts.FindAsync(id);
 
-            if (artist == null)
+            if (part == null)
             {
                 return NotFound();
             }
 
-            return artist;
+            return part;
         }
 
-        // PUT: api/Artist/5
+        // PUT: api/Part/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
+        public async Task<IActionResult> PutPart(int id, Part part)
         {
-            if (id != artist.Id)
+            if (id != part.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            _context.Entry(part).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace RecordingTrackerApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArtistExists(id))
+                if (!PartExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace RecordingTrackerApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Artist
+        // POST: api/Part
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        public async Task<ActionResult<Part>> PostPart(Part part)
         {
-          if (_context.Artists == null)
+          if (_context.Parts == null)
           {
-              return Problem("Entity set 'RecordingContext.Artists'  is null.");
+              return Problem("Entity set 'RecordingContext.Parts'  is null.");
           }
-            _context.Artists.Add(artist);
+            _context.Parts.Add(part);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
+            return CreatedAtAction("GetPart", new { id = part.Id }, part);
         }
 
-        // DELETE: api/Artist/5
+        // DELETE: api/Part/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtist(int id)
+        public async Task<IActionResult> DeletePart(int id)
         {
-            if (_context.Artists == null)
+            if (_context.Parts == null)
             {
                 return NotFound();
             }
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
+            var part = await _context.Parts.FindAsync(id);
+            if (part == null)
             {
                 return NotFound();
             }
 
-            _context.Artists.Remove(artist);
+            _context.Parts.Remove(part);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ArtistExists(int id)
+        private bool PartExists(int id)
         {
-            return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Parts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

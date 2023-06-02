@@ -10,7 +10,7 @@ using RecordingTrackerApi.Data;
 
 namespace RecordingTrackerApi.Migrations
 {
-    [DbContext(typeof(ArtistContext))]
+    [DbContext(typeof(RecordingContext))]
     [Migration("20230602002843_AddTreenode")]
     partial class AddTreenode
     {

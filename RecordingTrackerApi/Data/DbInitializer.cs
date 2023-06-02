@@ -5,7 +5,7 @@ namespace RecordingTrackerApi.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(ArtistContext context)
+        public static void Initialize(RecordingContext context)
         {
             context.Database.EnsureDeleted();
             context.Database.Migrate();

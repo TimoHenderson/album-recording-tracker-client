@@ -12,55 +12,55 @@ namespace RecordingTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistController : ControllerBase
+    public class InstrumentController : ControllerBase
     {
         private readonly RecordingContext _context;
 
-        public ArtistController(RecordingContext context)
+        public InstrumentController(RecordingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Artist
+        // GET: api/Instrument
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
+        public async Task<ActionResult<IEnumerable<Instrument>>> GetInstruments()
         {
-          if (_context.Artists == null)
+          if (_context.Instruments == null)
           {
               return NotFound();
           }
-            return await _context.Artists.ToListAsync();
+            return await _context.Instruments.ToListAsync();
         }
 
-        // GET: api/Artist/5
+        // GET: api/Instrument/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetArtist(int id)
+        public async Task<ActionResult<Instrument>> GetInstrument(int id)
         {
-          if (_context.Artists == null)
+          if (_context.Instruments == null)
           {
               return NotFound();
           }
-            var artist = await _context.Artists.FindAsync(id);
+            var instrument = await _context.Instruments.FindAsync(id);
 
-            if (artist == null)
+            if (instrument == null)
             {
                 return NotFound();
             }
 
-            return artist;
+            return instrument;
         }
 
-        // PUT: api/Artist/5
+        // PUT: api/Instrument/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
+        public async Task<IActionResult> PutInstrument(int id, Instrument instrument)
         {
-            if (id != artist.Id)
+            if (id != instrument.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            _context.Entry(instrument).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace RecordingTrackerApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArtistExists(id))
+                if (!InstrumentExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace RecordingTrackerApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Artist
+        // POST: api/Instrument
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        public async Task<ActionResult<Instrument>> PostInstrument(Instrument instrument)
         {
-          if (_context.Artists == null)
+          if (_context.Instruments == null)
           {
-              return Problem("Entity set 'RecordingContext.Artists'  is null.");
+              return Problem("Entity set 'RecordingContext.Instruments'  is null.");
           }
-            _context.Artists.Add(artist);
+            _context.Instruments.Add(instrument);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
+            return CreatedAtAction("GetInstrument", new { id = instrument.Id }, instrument);
         }
 
-        // DELETE: api/Artist/5
+        // DELETE: api/Instrument/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtist(int id)
+        public async Task<IActionResult> DeleteInstrument(int id)
         {
-            if (_context.Artists == null)
+            if (_context.Instruments == null)
             {
                 return NotFound();
             }
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
+            var instrument = await _context.Instruments.FindAsync(id);
+            if (instrument == null)
             {
                 return NotFound();
             }
 
-            _context.Artists.Remove(artist);
+            _context.Instruments.Remove(instrument);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ArtistExists(int id)
+        private bool InstrumentExists(int id)
         {
-            return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Instruments?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

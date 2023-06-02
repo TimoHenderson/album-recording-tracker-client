@@ -12,55 +12,55 @@ namespace RecordingTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ArtistController : ControllerBase
+    public class SongController : ControllerBase
     {
         private readonly RecordingContext _context;
 
-        public ArtistController(RecordingContext context)
+        public SongController(RecordingContext context)
         {
             _context = context;
         }
 
-        // GET: api/Artist
+        // GET: api/Song
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
+        public async Task<ActionResult<IEnumerable<Song>>> GetSongs()
         {
-          if (_context.Artists == null)
+          if (_context.Songs == null)
           {
               return NotFound();
           }
-            return await _context.Artists.ToListAsync();
+            return await _context.Songs.ToListAsync();
         }
 
-        // GET: api/Artist/5
+        // GET: api/Song/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetArtist(int id)
+        public async Task<ActionResult<Song>> GetSong(int id)
         {
-          if (_context.Artists == null)
+          if (_context.Songs == null)
           {
               return NotFound();
           }
-            var artist = await _context.Artists.FindAsync(id);
+            var song = await _context.Songs.FindAsync(id);
 
-            if (artist == null)
+            if (song == null)
             {
                 return NotFound();
             }
 
-            return artist;
+            return song;
         }
 
-        // PUT: api/Artist/5
+        // PUT: api/Song/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
+        public async Task<IActionResult> PutSong(int id, Song song)
         {
-            if (id != artist.Id)
+            if (id != song.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            _context.Entry(song).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace RecordingTrackerApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArtistExists(id))
+                if (!SongExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace RecordingTrackerApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Artist
+        // POST: api/Song
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        public async Task<ActionResult<Song>> PostSong(Song song)
         {
-          if (_context.Artists == null)
+          if (_context.Songs == null)
           {
-              return Problem("Entity set 'RecordingContext.Artists'  is null.");
+              return Problem("Entity set 'RecordingContext.Songs'  is null.");
           }
-            _context.Artists.Add(artist);
+            _context.Songs.Add(song);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
+            return CreatedAtAction("GetSong", new { id = song.Id }, song);
         }
 
-        // DELETE: api/Artist/5
+        // DELETE: api/Song/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtist(int id)
+        public async Task<IActionResult> DeleteSong(int id)
         {
-            if (_context.Artists == null)
+            if (_context.Songs == null)
             {
                 return NotFound();
             }
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
+            var song = await _context.Songs.FindAsync(id);
+            if (song == null)
             {
                 return NotFound();
             }
 
-            _context.Artists.Remove(artist);
+            _context.Songs.Remove(song);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ArtistExists(int id)
+        private bool SongExists(int id)
         {
-            return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Songs?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

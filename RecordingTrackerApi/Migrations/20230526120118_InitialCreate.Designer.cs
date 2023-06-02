@@ -11,7 +11,7 @@ using RecordingTrackerApi.Data;
 
 namespace RecordingTrackerApi.Migrations
 {
-    [DbContext(typeof(ArtistContext))]
+    [DbContext(typeof(RecordingContext))]
     [Migration("20230526120118_InitialCreate")]
     partial class InitialCreate
     {

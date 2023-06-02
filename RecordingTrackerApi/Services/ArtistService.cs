@@ -6,9 +6,9 @@ namespace RecordingTrackerApi.Services;
 
 public class ArtistService
 {
-    private readonly ArtistContext _context;
+    private readonly RecordingContext _context;
 
-    public ArtistService(ArtistContext context)
+    public ArtistService(RecordingContext context)
     {
         _context = context;
     }
