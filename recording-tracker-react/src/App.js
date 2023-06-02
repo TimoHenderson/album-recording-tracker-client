@@ -12,8 +12,13 @@ import SongPage from './routes/SongPage';
 import AppThemeProvider from './themes/AppThemeProvider';
 import { darkTheme } from './themes/darkTheme';
 
-function App() {
+const treeStructure = ["Artist", "Album", "Song", "Part"];
+
+const App = () => {
   const [artists, setArtists] = useState([]);
+  const [albums, setAlbums] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [parts, setParts] = useState([]);
 
   useEffect(() => {
     const getArtists = async () => {

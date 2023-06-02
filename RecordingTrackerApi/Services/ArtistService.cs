@@ -19,7 +19,7 @@ public class ArtistService
             Include(a => a.Children)
             .ThenInclude(a => a.Children)
             .ThenInclude(s => s.Children)
-            .ThenInclude(p => p.Instrument)
+            // .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .ToList();
     }
@@ -30,7 +30,7 @@ public class ArtistService
            Include(a => a.Children)
             .ThenInclude(a => a.Children)
             .ThenInclude(s => s.Children)
-            .ThenInclude(p => p.Instrument)
+            // .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .SingleOrDefault(a => a.Id == id);
     }

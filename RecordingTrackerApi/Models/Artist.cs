@@ -1,21 +1,20 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
 
-public class Artist
+public class Artist : TreeNode
 {
-    public int Id { get; set; }
-
-    [Required]
-    [MaxLength(100)]
-    public string? Name { get; set; }
+    [NotMapped]
+    public override string Type => "Artist";
 
     [NotMapped]
-    public string Type => "Artist";
+    public override string ChildType => "Album";
 
-    [NotMapped]
-    public string ChildType => "Album";
-
+    [JsonIgnore]
     public ICollection<Album> Children { get; set; } = new List<Album>();
+
+    [NotMapped]
+    public ICollection<int> ChildrenIds => Children.Select(a => a.Id).ToList();
 }
