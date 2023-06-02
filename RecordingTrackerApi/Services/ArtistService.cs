@@ -13,15 +13,22 @@ public class ArtistService
         _context = context;
     }
 
-    public IEnumerable<Artist> GetAll()
+    public async Task<IEnumerable<Artist>> GetAll()
     {
-        return _context.Artists.
-            Include(a => a.Children)
-            .ThenInclude(a => a.Children)
-            .ThenInclude(s => s.Children)
-            // .ThenInclude(p => p.Instrument)
-            .AsNoTracking()
-            .ToList();
+        return await _context.Artists
+        .Include(a => a.Children)
+        .AsNoTracking()
+        .ToListAsync();
+
+        // foreach (var artist in artists)
+        // {
+        //     System.Console.WriteLine(artist.Name, artist.Children.Count);
+        //     foreach (var id in artist.ChildrenIds)
+        //     {
+        //         System.Console.WriteLine(id);
+        //     }
+        // }
+        // return artists;
     }
 
     public Artist? Get(int id)

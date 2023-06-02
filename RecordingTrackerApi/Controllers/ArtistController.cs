@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecordingTrackerApi.Data;
 using RecordingTrackerApi.Models;
+using RecordingTrackerApi.Services;
+using Microsoft.AspNetCore.Cors;
 
 namespace RecordingTrackerApi.Controllers
 {
@@ -14,111 +16,113 @@ namespace RecordingTrackerApi.Controllers
     [ApiController]
     public class ArtistController : ControllerBase
     {
-        private readonly RecordingContext _context;
+        private readonly ArtistService _service;
 
-        public ArtistController(RecordingContext context)
+        public ArtistController(ArtistService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Artist
+        [EnableCors]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Artist>>> GetArtists()
         {
-          if (_context.Artists == null)
-          {
-              return NotFound();
-          }
-            return await _context.Artists.ToListAsync();
-        }
-
-        // GET: api/Artist/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetArtist(int id)
-        {
-          if (_context.Artists == null)
-          {
-              return NotFound();
-          }
-            var artist = await _context.Artists.FindAsync(id);
-
-            if (artist == null)
+            var artists = await _service.GetAll();
+            if (artists == null)
             {
                 return NotFound();
             }
-
-            return artist;
+            return Ok(artists);
         }
 
-        // PUT: api/Artist/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, Artist artist)
-        {
-            if (id != artist.Id)
-            {
-                return BadRequest();
-            }
+        // // GET: api/Artist/5
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<Artist>> GetArtist(int id)
+        // {
+        //     if (ArtistService.Artists == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     var artist = await ArtistService.Artists.FindAsync(id);
 
-            _context.Entry(artist).State = EntityState.Modified;
+        //     if (artist == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArtistExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //     return artist;
+        // }
 
-            return NoContent();
-        }
+        // // PUT: api/Artist/5
+        // // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // [HttpPut("{id}")]
+        // public async Task<IActionResult> PutArtist(int id, Artist artist)
+        // {
+        //     if (id != artist.Id)
+        //     {
+        //         return BadRequest();
+        //     }
 
-        // POST: api/Artist
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Artist>> PostArtist(Artist artist)
-        {
-          if (_context.Artists == null)
-          {
-              return Problem("Entity set 'RecordingContext.Artists'  is null.");
-          }
-            _context.Artists.Add(artist);
-            await _context.SaveChangesAsync();
+        //     ArtistService.Entry(artist).State = EntityState.Modified;
 
-            return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
-        }
+        //     try
+        //     {
+        //         await ArtistService.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!ArtistExists(id))
+        //         {
+        //             return NotFound();
+        //         }
+        //         else
+        //         {
+        //             throw;
+        //         }
+        //     }
 
-        // DELETE: api/Artist/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtist(int id)
-        {
-            if (_context.Artists == null)
-            {
-                return NotFound();
-            }
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
-            {
-                return NotFound();
-            }
+        //     return NoContent();
+        // }
 
-            _context.Artists.Remove(artist);
-            await _context.SaveChangesAsync();
+        // // POST: api/Artist
+        // // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // [HttpPost]
+        // public async Task<ActionResult<Artist>> PostArtist(Artist artist)
+        // {
+        //     if (ArtistService.Artists == null)
+        //     {
+        //         return Problem("Entity set 'RecordingContext.Artists'  is null.");
+        //     }
+        //     ArtistService.Artists.Add(artist);
+        //     await ArtistService.SaveChangesAsync();
 
-            return NoContent();
-        }
+        //     return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
+        // }
 
-        private bool ArtistExists(int id)
-        {
-            return (_context.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+        // // DELETE: api/Artist/5
+        // [HttpDelete("{id}")]
+        // public async Task<IActionResult> DeleteArtist(int id)
+        // {
+        //     if (ArtistService.Artists == null)
+        //     {
+        //         return NotFound();
+        //     }
+        //     var artist = await ArtistService.Artists.FindAsync(id);
+        //     if (artist == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     ArtistService.Artists.Remove(artist);
+        //     await ArtistService.SaveChangesAsync();
+
+        //     return NoContent();
+        // }
+
+        // private bool ArtistExists(int id)
+        // {
+        //     return (ArtistService.Artists?.Any(e => e.Id == id)).GetValueOrDefault();
+        // }
     }
 }
