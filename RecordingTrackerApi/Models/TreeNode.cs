@@ -19,5 +19,4 @@ public abstract class TreeNode :IEntityBase
 
     public abstract int CalculatedCompletion { get; }
 
-
 }

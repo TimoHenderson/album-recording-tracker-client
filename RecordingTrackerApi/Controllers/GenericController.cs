@@ -56,6 +56,26 @@ namespace RecordingTrackerApi.Controllers
             return CreatedAtAction("Get", new { id = savedEntity.Id }, entity);
         }
 
+        
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, TEntity entity)
+        {
+            if (id != entity.Id)
+            {
+                return BadRequest();
+            }
+            var updated = await _service.Update(entity);
+
+            return NoContent() ;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAlbum(int id)
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
+
     }
 }
 

@@ -6,15 +6,15 @@ namespace RecordingTrackerApi.Services
 {
 	public interface IEntityService<T> where T : IEntityBase
 	{
-        public Task<IEnumerable<Artist>> GetAll();
+        public Task<IEnumerable<T>> GetAll();
 
         public Task<T?> Get(int id);
 
         public Task<T> Create(T entity);
 
-        public void Delete(T entity);
+        public Task<int?> Delete(int id);
 
-        public void Update(T entity);
+        public Task<int> Update(T entity);
         
     }
 }
