@@ -16,9 +16,9 @@ namespace RecordingTrackerApi.Controllers
     [ApiController]
     public class ArtistController : ControllerBase
     {
-        private readonly ArtistService _service;
+        private readonly ArtistsService _service;
 
-        public ArtistController(ArtistService service)
+        public ArtistController(ArtistsService service)
         {
             _service = service;
         }

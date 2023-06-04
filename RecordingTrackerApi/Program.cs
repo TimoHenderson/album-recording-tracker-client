@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RecordingContext>(options =>
     options.UseSqlServer(dbConnectionString));
 
-builder.Services.AddScoped<ArtistService>();
+builder.Services.AddScoped<ArtistsService>();
 
 var app = builder.Build();
 

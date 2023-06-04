@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RecordingTrackerApi.Models;
 using RecordingTrackerApi.Services;
 
@@ -31,7 +32,7 @@ namespace RecordingTrackerApi.Controllers
 
         // GET: api/Artists/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>>? GetArtist(int id)
+        public async Task<ActionResult<TEntity>>? Get(int id)
         {
             var entity = await _service.Get(id);
             
@@ -41,6 +42,18 @@ namespace RecordingTrackerApi.Controllers
             }
 
             return Ok(entity);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<TEntity>> Post(TEntity entity)
+        {
+            var savedEntity = await _service.Create(entity);
+            if (savedEntity == null)
+            {
+                return Problem("Error - not created");
+            }
+
+            return CreatedAtAction("Get", new { id = savedEntity.Id }, entity);
         }
 
     }

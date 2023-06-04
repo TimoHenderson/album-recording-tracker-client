@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RecordingTrackerApi.Services;
 
-public class ArtistService: IEntityService<Artist>
+public class ArtistsService: IEntityService<Artist>
 {
     private readonly RecordingContext _context;
 
-    public ArtistService(RecordingContext context)
+    public ArtistsService(RecordingContext context)
     {
         _context = context;
     }
@@ -46,9 +46,13 @@ public class ArtistService: IEntityService<Artist>
         }
     }
 
-    public Task<Artist> Create(Artist entity)
+    public async Task<Artist> Create(Artist artist)
     {
-        throw new NotImplementedException();
+        _context.Artists.Add(artist);
+        
+        await _context.SaveChangesAsync();
+
+        return artist;
     }
 
     public void Delete(Artist entity)
