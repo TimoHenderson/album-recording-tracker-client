@@ -1,6 +1,7 @@
 using RecordingTrackerApi.Data;
 using RecordingTrackerApi.Services;
 using Microsoft.EntityFrameworkCore;
+using RecordingTrackerApi.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,9 +48,10 @@ app.UseCors();
 
 app.UseAuthorization();
 
-
 app.MapControllers();
 
 app.CreateDbIfNotExists();
+
+//app.MapArtistsEndpoints();
 
 app.Run();
