@@ -19,16 +19,6 @@ public class ArtistService
         .Include(a => a.Children)
         .AsNoTracking()
         .ToListAsync();
-
-        // foreach (var artist in artists)
-        // {
-        //     System.Console.WriteLine(artist.Name, artist.Children.Count);
-        //     foreach (var id in artist.ChildrenIds)
-        //     {
-        //         System.Console.WriteLine(id);
-        //     }
-        // }
-        // return artists;
     }
 
     public Artist? Get(int id)

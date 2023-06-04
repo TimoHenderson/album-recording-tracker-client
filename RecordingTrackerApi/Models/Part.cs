@@ -23,6 +23,9 @@ public class Part : TreeNode
 
     public Instrument Instrument { get; set; } = new Instrument();
 
-    public int completion { get; set; } = 0;
+    public int Completion { get; set; } = 0;
+
+    [NotMapped]
+    public override int CalculatedCompletion { get => Completion; }
 
 }

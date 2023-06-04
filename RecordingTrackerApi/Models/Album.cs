@@ -26,4 +26,8 @@ public class Album : TreeNode
 
     [NotMapped]
     public ICollection<int> ChildrenIds => Children.Select(a => a.Id).ToList();
+
+    [NotMapped]
+    public override int CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : 0; }
+
 }

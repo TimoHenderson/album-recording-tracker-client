@@ -17,5 +17,7 @@ public abstract class TreeNode
 
     public virtual string ChildType { get; } = "None";
 
+    public abstract int CalculatedCompletion { get; }
+
 
 }
