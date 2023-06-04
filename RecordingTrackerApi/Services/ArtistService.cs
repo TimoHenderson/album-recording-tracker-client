@@ -6,22 +6,19 @@ namespace RecordingTrackerApi.Services;
 
 public class ArtistService
 {
-    private readonly ArtistContext _context;
+    private readonly RecordingContext _context;
 
-    public ArtistService(ArtistContext context)
+    public ArtistService(RecordingContext context)
     {
         _context = context;
     }
 
-    public IEnumerable<Artist> GetAll()
+    public async Task<IEnumerable<Artist>> GetAll()
     {
-        return _context.Artists.
-            Include(a => a.Children)
-            .ThenInclude(a => a.Children)
-            .ThenInclude(s => s.Children)
-            .ThenInclude(p => p.Instrument)
-            .AsNoTracking()
-            .ToList();
+        return await _context.Artists
+        .Include(a => a.Children)
+        .AsNoTracking()
+        .ToListAsync();
     }
 
     public Artist? Get(int id)
@@ -30,7 +27,7 @@ public class ArtistService
            Include(a => a.Children)
             .ThenInclude(a => a.Children)
             .ThenInclude(s => s.Children)
-            .ThenInclude(p => p.Instrument)
+            // .ThenInclude(p => p.Instrument)
             .AsNoTracking()
             .SingleOrDefault(a => a.Id == id);
     }

@@ -4,27 +4,28 @@ using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
 
-public class Part
+public class Part : TreeNode
 {
-    public int Id { get; set; }
-
-    [Required]
-    [MaxLength(100)]
-    public string? Name { get; set; }
 
     [Required]
     [JsonIgnore]
     public Song Parent { get; set; } = new Song();
 
     [NotMapped]
-    public int ParentNum => Parent.Id;
+    public string? ParentType => Parent != null ? Parent.Type : null;
 
     [NotMapped]
-    public string Type => "Part";
+    public int? ParentNum => Parent != null ? Parent.Id : null;
+
+
+    [NotMapped]
+    public override string Type => "Part";
 
     public Instrument Instrument { get; set; } = new Instrument();
 
-    public int completion { get; set; } = 0;
+    public int Completion { get; set; } = 0;
 
+    [NotMapped]
+    public override int CalculatedCompletion { get => Completion; }
 
 }

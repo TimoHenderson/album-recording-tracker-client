@@ -4,26 +4,30 @@ using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
 
-public class Album
+public class Album : TreeNode
 {
-    public int Id { get; set; }
-
-    [Required]
-    [MaxLength(100)]
-    public string? Name { get; set; }
-
     [Required]
     [JsonIgnore]
     public Artist Parent { get; set; } = new Artist();
 
     [NotMapped]
-    public int ParentNum => Parent.Id;
+    public string? ParentType => Parent != null ? Parent.Type : null;
 
     [NotMapped]
-    public string Type => "Album";
+    public int? ParentNum => Parent != null ? Parent.Id : null;
+    [NotMapped]
+    public override string Type => "Album";
 
     [NotMapped]
-    public string ChildType => "Song";
+    public override string ChildType => "Song";
 
+    [JsonIgnore]
     public ICollection<Song> Children { get; set; } = new List<Song>();
+
+    [NotMapped]
+    public ICollection<int> ChildrenIds => Children.Select(a => a.Id).ToList();
+
+    [NotMapped]
+    public override int CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : 0; }
+
 }
