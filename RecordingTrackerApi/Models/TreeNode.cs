@@ -4,8 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
 
-public abstract class TreeNode :IEntityBase
+public abstract class TreeNode : IEntityBase
 {
+    [Required]
     public int Id { get; set; }
 
     [Required]
