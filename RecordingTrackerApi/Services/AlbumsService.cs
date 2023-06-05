@@ -5,15 +5,15 @@ using RecordingTrackerApi.Models;
 
 namespace RecordingTrackerApi.Services;
 
-public class AlbumsService: TreeNodeService<Album>
+public class AlbumsService : TreeNodeService<Album>
 {
-	public AlbumsService(RecordingContext context) : base(context) { }
-	
+    public AlbumsService(RecordingContext context) : base(context) { }
+
 
     public override async Task<IEnumerable<Album>> GetAll()
     {
         return await _dbSet
-        .Include(a=>a.Parent)
+        .Include(a => a.Parent)
         .Include(a => a.Children)
         .ThenInclude(s => s.Children)
         .AsNoTracking()
@@ -44,7 +44,7 @@ public class AlbumsService: TreeNodeService<Album>
     public override async Task<Album?> Create(Album album)
     {
         var artist = await _context.Artists.FindAsync(album.ParentNum);
-       
+
         if (artist == null) return null;
         else album.Parent = artist;
         return await base.Create(album);

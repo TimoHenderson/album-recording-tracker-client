@@ -32,6 +32,7 @@ builder.Services.AddDbContext<RecordingContext>(options =>
 
 builder.Services.AddScoped<ArtistsService>();
 builder.Services.AddScoped<AlbumsService>();
+builder.Services.AddScoped<SongsService>();
 
 
 var app = builder.Build();

@@ -7,9 +7,9 @@ namespace RecordingTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlbumsController : GenericController<Album>
+    public class SongsController : GenericController<Song>
     {
-        public AlbumsController(AlbumsService service) : base(service) { }
+        public SongsController(SongsService service) : base(service) { }
     }
 }
 
