@@ -1,6 +1,7 @@
 using RecordingTrackerApi.Data;
 using RecordingTrackerApi.Services;
 using Microsoft.EntityFrameworkCore;
+using RecordingTrackerApi.Controllers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +30,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RecordingContext>(options =>
     options.UseSqlServer(dbConnectionString));
 
-builder.Services.AddScoped<ArtistService>();
+builder.Services.AddScoped<ArtistsService>();
+builder.Services.AddScoped<AlbumsService>();
+builder.Services.AddScoped<SongsService>();
+builder.Services.AddScoped<PartsService>();
+builder.Services.AddScoped<InstrumentsService>();
 
 var app = builder.Build();
 
@@ -47,9 +52,10 @@ app.UseCors();
 
 app.UseAuthorization();
 
-
 app.MapControllers();
 
 app.CreateDbIfNotExists();
+
+//app.MapArtistsEndpoints();
 
 app.Run();

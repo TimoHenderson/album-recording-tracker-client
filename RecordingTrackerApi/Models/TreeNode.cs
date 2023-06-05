@@ -4,20 +4,13 @@ using System.Text.Json.Serialization;
 
 namespace RecordingTrackerApi.Models;
 
-public abstract class TreeNode
+public abstract class TreeNode : GenericEntity
 {
-    public int Id { get; set; }
-
-    [Required]
-    [MaxLength(100)]
-    public string? Name { get; set; }
-
     [NotMapped]
     public abstract string Type { get; }
 
     public virtual string ChildType { get; } = "None";
 
-    public abstract int CalculatedCompletion { get; }
-
+    public virtual int? CalculatedCompletion { get; } = null;
 
 }
