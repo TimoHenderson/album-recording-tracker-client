@@ -5,13 +5,13 @@ using RecordingTrackerApi.Models;
 
 namespace RecordingTrackerApi.Services
 {
-    public abstract class TreeNodeService<TEntity>
-        : IEntityService<TEntity> where TEntity : TreeNode
+    public abstract class GenericEntityService<TEntity>
+        : IEntityService<TEntity> where TEntity : GenericEntity
     {
         protected readonly RecordingContext _context;
         protected DbSet<TEntity> _dbSet;
 
-        public TreeNodeService(RecordingContext context)
+        public GenericEntityService(RecordingContext context)
         {
             _context = context;
             _dbSet = _context.Set<TEntity>();
@@ -53,8 +53,8 @@ namespace RecordingTrackerApi.Services
             return await _context.SaveChangesAsync();
         }
 
-       
-        
+
+
     }
 }
 

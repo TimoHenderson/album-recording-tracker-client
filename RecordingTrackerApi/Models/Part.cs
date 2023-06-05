@@ -15,7 +15,6 @@ public class Part : TreeNode
     [NotMapped]
     public string? ParentType => Parent != null ? Parent.Type : null;
 
-    [Required]
     [NotMapped]
     public int ParentNum
     {
@@ -23,7 +22,6 @@ public class Part : TreeNode
         set { parentNum = value; }
     }
 
-    [Required]
     [NotMapped]
     public int InstrumentNum
     {
@@ -37,7 +35,7 @@ public class Part : TreeNode
     [JsonIgnore]
     public Instrument? Instrument { get; set; } = null;
 
-    [Required]
+
     [JsonIgnore]
     public int Completion { get; set; } = 0;
 

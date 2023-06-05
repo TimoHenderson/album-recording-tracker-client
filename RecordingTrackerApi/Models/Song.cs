@@ -17,7 +17,6 @@ public class Song : TreeNode
     [JsonIgnore]
     public Album? Parent { get; set; } = null;
 
-    [Required]
     [NotMapped]
     public int ParentNum
     {

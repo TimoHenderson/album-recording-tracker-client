@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RecordingTrackerApi.Services;
 
-public class ArtistsService: TreeNodeService<Artist>
+public class ArtistsService: GenericEntityService<Artist>
 {
     public ArtistsService(RecordingContext context) : base(context) { }
 

@@ -8,18 +8,17 @@ public class Album : TreeNode
 {
 
     private int parentNum;
-    
+
     [JsonIgnore]
     public Artist? Parent { get; set; } = null;
 
     [NotMapped]
     public string? ParentType => Parent != null ? Parent.Type : null;
 
-    [Required]
     [NotMapped]
     public int ParentNum
     {
-        get { return Parent != null ? Parent.Id : parentNum;}
+        get { return Parent != null ? Parent.Id : parentNum; }
         set { parentNum = value; }
     }
 

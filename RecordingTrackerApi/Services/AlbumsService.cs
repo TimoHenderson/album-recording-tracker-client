@@ -5,7 +5,7 @@ using RecordingTrackerApi.Models;
 
 namespace RecordingTrackerApi.Services;
 
-public class AlbumsService : TreeNodeService<Album>
+public class AlbumsService : GenericEntityService<Album>
 {
     public AlbumsService(RecordingContext context) : base(context) { }
 
@@ -19,8 +19,6 @@ public class AlbumsService : TreeNodeService<Album>
         .AsNoTracking()
         .ToListAsync();
     }
-
-
 
     public override async Task<Album?> Get(int id)
     {

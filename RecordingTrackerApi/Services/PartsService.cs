@@ -5,7 +5,7 @@ using RecordingTrackerApi.Models;
 
 namespace RecordingTrackerApi.Services;
 
-public class PartsService : TreeNodeService<Part>
+public class PartsService : GenericEntityService<Part>
 {
     public PartsService(RecordingContext context) : base(context) { }
 

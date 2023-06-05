@@ -34,7 +34,7 @@ builder.Services.AddScoped<ArtistsService>();
 builder.Services.AddScoped<AlbumsService>();
 builder.Services.AddScoped<SongsService>();
 builder.Services.AddScoped<PartsService>();
-
+builder.Services.AddScoped<InstrumentsService>();
 
 var app = builder.Build();
 
