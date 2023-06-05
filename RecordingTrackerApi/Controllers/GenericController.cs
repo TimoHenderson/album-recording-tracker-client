@@ -7,16 +7,16 @@ using RecordingTrackerApi.Services;
 
 namespace RecordingTrackerApi.Controllers
 {
-   
-    public abstract class GenericController<TEntity> :ControllerBase
-		where TEntity:IEntityBase
-	{
-		protected readonly IEntityService<TEntity> _service;
 
-		protected GenericController(IEntityService<TEntity> service)
-		{
-			_service = service;
-		}
+    public abstract class GenericController<TEntity> : ControllerBase
+        where TEntity : IEntityBase
+    {
+        protected readonly IEntityService<TEntity> _service;
+
+        protected GenericController(IEntityService<TEntity> service)
+        {
+            _service = service;
+        }
 
         [EnableCors]
         [HttpGet]
@@ -30,12 +30,11 @@ namespace RecordingTrackerApi.Controllers
             return Ok(entities);
         }
 
-        // GET: api/Artists/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TEntity>>? Get(int id)
         {
             var entity = await _service.Get(id);
-            
+
             if (entity == null)
             {
                 return NotFound();
@@ -56,24 +55,21 @@ namespace RecordingTrackerApi.Controllers
             return CreatedAtAction("Get", new { id = savedEntity.Id }, entity);
         }
 
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, TEntity entity)
         {
-            if (id != entity.Id)
-            {
-                return BadRequest();
-            }
-            var updated = await _service.Update(entity);
-
-            return NoContent() ;
+            var updatedEntity = await _service.Update(entity);
+            if (updatedEntity == null) return BadRequest();
+            return Ok(updatedEntity);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlbum(int id)
         {
-            await _service.Delete(id);
-            return NoContent();
+            var deletedEntity = await _service.Delete(id);
+            if (deletedEntity == null) return BadRequest();
+            return Ok(deletedEntity);
         }
 
     }

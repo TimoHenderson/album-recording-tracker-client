@@ -9,7 +9,6 @@ public class SongsService : GenericEntityService<Song>
 {
     public SongsService(RecordingContext context) : base(context) { }
 
-
     public override async Task<IEnumerable<Song>> GetAll()
     {
         return await _dbSet
@@ -18,8 +17,6 @@ public class SongsService : GenericEntityService<Song>
         .AsNoTracking()
         .ToListAsync();
     }
-
-
 
     public override async Task<Song?> Get(int id)
     {
