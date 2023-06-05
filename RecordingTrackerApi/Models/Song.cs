@@ -30,6 +30,6 @@ public class Song : TreeNode
 
 
     [NotMapped]
-    public override int CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : 0; }
+    public override int? CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : 0; }
 
 }

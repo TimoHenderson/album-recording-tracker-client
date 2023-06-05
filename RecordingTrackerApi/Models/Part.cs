@@ -26,6 +26,6 @@ public class Part : TreeNode
     public int Completion { get; set; } = 0;
 
     [NotMapped]
-    public override int CalculatedCompletion { get => Completion; }
+    public override int? CalculatedCompletion { get => Completion; }
 
 }

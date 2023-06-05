@@ -6,15 +6,23 @@ namespace RecordingTrackerApi.Models;
 
 public class Album : TreeNode
 {
-    [Required]
+
+    private int parentNum;
+    
     [JsonIgnore]
-    public Artist Parent { get; set; } = new Artist();
+    public Artist? Parent { get; set; } = null;
 
     [NotMapped]
     public string? ParentType => Parent != null ? Parent.Type : null;
 
+    [Required]
     [NotMapped]
-    public int? ParentNum => Parent != null ? Parent.Id : null;
+    public int ParentNum
+    {
+        get { return Parent != null ? Parent.Id : parentNum;}
+        set { parentNum = value; }
+    }
+
     [NotMapped]
     public override string Type => "Album";
 
@@ -28,6 +36,6 @@ public class Album : TreeNode
     public ICollection<int> ChildrenIds => Children.Select(a => a.Id).ToList();
 
     [NotMapped]
-    public override int CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : 0; }
+    public override int? CalculatedCompletion { get => Children.Count > 0 ? Children.Sum(a => a.CalculatedCompletion) / Children.Count : null; }
 
 }

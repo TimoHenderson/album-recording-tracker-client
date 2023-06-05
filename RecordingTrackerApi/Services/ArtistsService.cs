@@ -10,7 +10,7 @@ public class ArtistsService: TreeNodeService<Artist>
 
     public override async Task<IEnumerable<Artist>> GetAll()
     {
-        return await _context.Artists
+        return await _dbSet
         .Include(a => a.Children)
         .ThenInclude(a => a.Children)
         .ThenInclude(s => s.Children)
@@ -22,7 +22,7 @@ public class ArtistsService: TreeNodeService<Artist>
 
     public override async Task<Artist?> Get(int id)
     {
-        var artist = await _context.Artists.FindAsync(id);
+        var artist = await _dbSet.FindAsync(id);
 
         if (artist == null)
         {
@@ -30,8 +30,8 @@ public class ArtistsService: TreeNodeService<Artist>
         }
         else
         {
-            return await _context.Artists.
-               Include(a => a.Children)
+            return await _dbSet
+               .Include(a => a.Children)
                 .ThenInclude(a => a.Children)
                 .ThenInclude(s => s.Children)
                 .AsNoTracking()

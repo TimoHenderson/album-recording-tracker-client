@@ -10,7 +10,7 @@ namespace RecordingTrackerApi.Services
 
         public Task<T?> Get(int id);
 
-        public Task<T> Create(T entity);
+        public Task<T?> Create(T entity);
 
         public Task<int?> Delete(int id);
 

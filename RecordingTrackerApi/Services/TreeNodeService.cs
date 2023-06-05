@@ -38,7 +38,7 @@ namespace RecordingTrackerApi.Services
         }
 
 
-        public async Task<TEntity> Create(TEntity entity)
+        public virtual async Task<TEntity?> Create(TEntity entity)
         {
             _dbSet.Add(entity);
             await _context.SaveChangesAsync();

@@ -17,6 +17,6 @@ public abstract class TreeNode :IEntityBase
 
     public virtual string ChildType { get; } = "None";
 
-    public abstract int CalculatedCompletion { get; }
+    public virtual int? CalculatedCompletion { get; } = null;
 
 }
