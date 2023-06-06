@@ -7,8 +7,8 @@ namespace RecordingTrackerApi.Data
     {
         public static void Initialize(RecordingContext context)
         {
-            context.Database.EnsureDeleted();
-            context.Database.Migrate();
+            //context.Database.EnsureDeleted();
+            //context.Database.Migrate();
 
             if (context.Artists.Any()
                 && context.Albums.Any()
@@ -16,7 +16,11 @@ namespace RecordingTrackerApi.Data
                 && context.Parts.Any()
                 && context.Instruments.Any())
             {
-                return;
+                context.Instruments.ExecuteDelete();
+                context.Parts.ExecuteDelete();
+                context.Songs.ExecuteDelete();
+                context.Albums.ExecuteDelete();
+                context.Artists.ExecuteDelete();
             }
 
             var guitarInstrument = new Instrument { Name = "Guitar" };

@@ -10,8 +10,7 @@ namespace RecordingTrackerApi.Controllers
     [ApiController]
     public class ArtistsController : GenericController<Artist>
     {
-
         public ArtistsController(ArtistsService service) : base(service) { }
-     
+
     }
 }
