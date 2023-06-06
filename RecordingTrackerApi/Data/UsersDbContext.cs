@@ -11,6 +11,8 @@ namespace RecordingTrackerApi.Data
         public UsersDbContext(DbContextOptions<UsersDbContext> options) : base(options)
         {
         }
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
     }
 }
 

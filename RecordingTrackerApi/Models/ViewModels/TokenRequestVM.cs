@@ -1,17 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
 namespace RecordingTrackerApi.Models.ViewModels
 {
-    public class LoginVM
+    public class TokenRequestVM
     {
-
         [Required]
-        public string EmailAddress { get; set; }
-
+        public string Token { get; set; }
         [Required]
-        public string Password { get; set; }
-
-
+        public string RefreshToken { get; set; }
     }
 }
 

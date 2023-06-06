@@ -40,6 +40,21 @@ builder.Services.AddDbContext<RecordingContext>(options =>
 builder.Services.AddDbContext<UsersDbContext>(options =>
     options.UseSqlServer(dbConnectionString));
 
+var tokenValidationParameters = new TokenValidationParameters()
+{
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+    ValidateIssuer = true,
+    ValidIssuer = issuer,
+    ValidateAudience = true,
+    ValidAudience = audience,
+
+    ValidateLifetime = true,
+    ClockSkew = TimeSpan.Zero
+};
+
+builder.Services.AddSingleton(tokenValidationParameters);
+
 // Add Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<UsersDbContext>()
@@ -56,15 +71,7 @@ builder.Services.AddAuthentication(options =>
     {
         options.SaveToken = true;
         options.RequireHttpsMetadata = false;
-        options.TokenValidationParameters = new TokenValidationParameters()
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
-            ValidateIssuer = true,
-            ValidIssuer = issuer,
-            ValidateAudience = true,
-            ValidAudience = audience
-        };
+        options.TokenValidationParameters = tokenValidationParameters;
     });
 
 
