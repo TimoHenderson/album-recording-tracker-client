@@ -3,14 +3,21 @@ import Album from '../components/Elements/Album';
 import Song from '../components/Elements/Song';
 import ElementList from '../components/Lists/ElementList';
 
-const AlbumPage = ({ artists, handleAction }) => {
+const AlbumPage = ({ artists, albums, songs, parts, handleAction }) => {
     const { artistId, albumId } = useParams();
+
     const artist = artists.find((artist) => artist.id === Number(artistId));
-    const album = artist ? artist.children.find((album) => album.id === Number(albumId)) : null;
-    const songNodes = album ?
-        album.children.map(
-            (song) => <Song key={song.id} song={song} album={album} artist={artist} handleAction={handleAction} />)
-        : null;
+
+    const album = artist ? albums.find((album) => album.id === Number(albumId)) : null;
+
+    const filteredSongs = album ? songs.filter(e => e.albumId === album.id) : [];
+    const songNodes = filteredSongs.map(
+        (song) => {
+            const children = parts.filter((part) => part.songId === song.id);
+            return <Song key={song.id} song={song} parts={children} album={album} artist={artist} handleAction={handleAction} />
+        }
+    )
+
 
     return (
         <>

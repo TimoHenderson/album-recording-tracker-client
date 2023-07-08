@@ -3,8 +3,8 @@ import { capitalize } from "../../utils/stringUtils";
 
 const CardDetails = ({ element }) => {
 
-    const numChildString = `${element.childType}s: ${element.children.length}`;
-    const completionString = `Completion: ${element.completion}%`;
+    //const numChildString = `${element.childType}s: ${element.children.length}`;
+    //const completionString = `Completion: ${element.completion}%`;
     return (
         <Box sx={{
             display: "grid",
@@ -12,8 +12,8 @@ const CardDetails = ({ element }) => {
             textAlign: "left",
 
         }}>
-            <Typography variant="inherit">{numChildString}</Typography>
-            <Typography variant="inherit">{completionString}</Typography>
+            {/* <Typography variant="inherit">{numChildString}</Typography>
+            <Typography variant="inherit">{completionString}</Typography> */}
         </Box>
     );
 }
