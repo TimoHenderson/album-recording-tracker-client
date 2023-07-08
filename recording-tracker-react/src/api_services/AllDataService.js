@@ -1,6 +1,6 @@
 import { calculateCompletions } from "../utils/calculateCompletions"
 
-const baseURL = 'https://localhost:5101/api/Artist/'
+const baseURL = 'https://localhost:7014/api/Artists/'
 // const baseURL = 'http://192.168.0.40:5101/api/Recording/'
 
 export const fetchAllArtists = () => {
@@ -25,6 +25,3 @@ export const updateArtist = (artist) => {
     })
         .then(res => res.json())
 }
-
-
-

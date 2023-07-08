@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from '../LogoutButton';
 
 const pages = ['Artists', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -129,6 +130,7 @@ const ResponsiveAppBar = () => {
                                 {page}
                             </Button>
                         ))}
+                        <LogoutButton />
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
